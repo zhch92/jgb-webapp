@@ -1,0 +1,82 @@
+@import "../define";
+
+#help {
+    border: 1px solid $borderColor;
+    background-color: $colorWhite;
+    padding-left: 15px;
+    .head {
+        height: 41px;
+        border-bottom: 1px solid $borderColor;
+        span {
+            display: inline-block;
+            padding: 10px;
+            font-size: 1.6rem;
+            user-select: none;
+            cursor: pointer;
+            &.active {
+                color: $colorBlue;
+                border-bottom: 2px solid $colorBlue;
+            }
+        }
+    }
+    .content {
+        min-height: 400px;
+        padding: 15px 15px 15px 0;
+        .first.page {
+            .row {
+                width: 100%;
+                .title {
+                    height: 30px;
+                    margin-bottom: 5px;
+                    padding: 5px 0 0 10px;
+                    font-size: 1.6rem;
+                    background-color: $bgColor;
+                    cursor: pointer;
+                    i {
+                        float: right;
+                        margin: 5px 15px 0 0;
+                    }
+                    &.active {
+                        color: $colorBlue;
+                    }
+                }
+                .detail {
+                    display: none;
+                    position: relative;
+                    p {
+                        margin: 0;
+                        padding: 10px 10px 0 2em;
+                        font-size: 1.6rem;
+                        // text-indent: 2em;
+                        color: $tipsColor;
+                        &.caption{
+                            padding-left: 5px;
+                        }
+                        &:last-child {
+                            padding-bottom: 10px;
+                        }
+                    }
+                    .link{
+                        position: absolute;
+                        bottom: 10px;
+                        left: 0;
+                        display: block;
+                        a{
+                            margin-left: 150px;
+                            width: 140px;
+                            display: inline-block;
+                            height: 20px;
+                            cursor: pointer;
+
+                        }
+                    }
+                }
+            }
+        }
+        .second.page {
+            i {
+                color: $colorBlue;
+            }
+        }
+    }
+}

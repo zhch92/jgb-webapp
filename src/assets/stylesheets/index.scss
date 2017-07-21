@@ -1,0 +1,300 @@
+@import "define";
+#index {
+    text-align: center;
+    background-color: $bgColor;
+    .swiper-wrapper {
+        .section {
+            width: 100%;
+            height: 100%;
+            .head {
+                padding: 15% 0 6%;
+                span {
+                    font-size: 3rem;
+                    color: #333333;
+                }
+            }
+            .head-bot {
+                padding: 15% 0 10%;
+            }
+        }
+        .first.section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .masking {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                background: #000;
+                opacity: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+            }
+            .first.block {
+                margin: -120px 50px 0 0;
+                background-size: 100% 100%;
+                z-index: 2;
+                .content {
+                    width: 700px;
+                    height: 170px;
+                    margin: 10px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: rgba(255, 255, 255, .7);
+                    .left {
+                        width: 185px;
+                        span {
+                            font-size: 60px;
+                            color: $colorBlue;
+                        }
+                    }
+                    .middle {
+                        height: 2px;
+                        width: 60px;
+                        margin: 5px 5px 0 5px;
+                        background-color: $colorBlue;
+                    }
+                    .right {
+                        height: 60px;
+                        width: 330px;
+                        text-align: left;
+                        span {
+                            display: block;
+                            font-size: 2.2rem;
+                        }
+                        span:first-child {
+                            color: $tipsColor;
+                        }
+                        span:last-child {
+                            padding-top: 5px;
+                            color: $colorBlue;
+                        }
+                    }
+                }
+            }
+            .second.block {
+                z-index: 2;
+                background-color: rgba(255, 255, 255, .7);
+                .login.form {
+                    width: 305px;
+                    padding: 40px 30px 20px;
+                    .top {
+                        position: relative;
+                        span {
+                            position: absolute;
+                            padding: 0 5px;
+                            margin: 8px 0 0 3px;
+                            border-right: 1px dotted $colorBlue;
+                            em {
+                                display: block;
+                                width: 18px;
+                                height: 20px;
+                                background-size: 100% 100%;
+                                background-repeat: no-repeat;
+                            }
+                        }
+                        input {
+                            width: 306px;
+                            height: 40px;
+                            margin-bottom: 20px;
+                            padding-left: 35px;
+                            border: 1px solid $colorBlue;
+                            background-color: transparent;
+                        }
+                    }
+                    .center {
+                        font-size: 1.6rem;
+                        color: $tipsColor;
+                        .remember {
+                            float: left;
+                            i {
+                                width: 14px;
+                                cursor: pointer;
+                                &.active {
+                                    color: $colorBlue;
+                                }
+                            }
+                        }
+                        .forget {
+                            float: right;
+                            span {
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                    .bottom {
+                        clear: both;
+                        margin-top: 40px;
+                        a {
+                            width: 100%;
+                            padding: 10px 0;
+                            font-size: 1.8rem;
+                            color: $colorWhite;
+                            background-color: $colorBlue;
+                        }
+                        div {
+                            margin-top: 10px;
+                            text-align: right;
+                            span {
+                                font-size: 1.6rem;
+                                color: $colorBlue;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+                .logout.form {
+                    width: 250px;
+                    padding: 25px 20px;
+                    color: $colorBlue;
+                    .top {
+                        text-align: left;
+                        span {
+                            font-size: 1.4rem;
+                        }
+                    }
+                    .center {
+                        height: 55px;
+                        padding-top: 10px;
+                        span {
+                            font-size: 1.8rem;
+                        }
+                    }
+                    .bottom {
+                        a {
+                            width: 100%;
+                            padding: 5px 0;
+                            font-size: 1.8rem;
+                            border: 2px solid $colorBlue;
+                            border-radius: 5px;
+                        }
+                    }
+                }
+            }
+        }
+        .second.section {
+            .content {
+                .block {
+                    display: inline-block;
+                    width: 121px;
+                    height: 121px;
+                    vertical-align: text-top;
+                    position: relative;
+                    &:after {
+                        display: block;
+                        position: absolute;
+                        content: '';
+                        left: 50%;
+                        margin-left: -8px;
+                        bottom: -60px;
+                        width: 0px;
+                        height: 0px;
+                        border-left: 10px solid transparent;
+                        border-top: 15px solid transparent;
+                        border-right: 10px solid transparent;
+                        border-bottom: 15px solid transparent;
+                        // border-bottom-color: #a6a6a6;
+                    }
+                    &.active {
+                        background-position: 0 -121px;
+                        &:after {
+                            border-bottom-color: #a6a6a6;
+                        }
+                    }
+                    p {
+                        text-align: left;
+                        &:nth-child(1) {
+                            margin: 0 0 40px 0;
+                            padding-left: 20px;
+                            color: $colorBlue;
+                            font-size: 2.4rem;
+                            border-left: 2px solid $colorBlue;
+                            line-height: 1;
+                        }
+                        &:last-child {
+                            margin: 0;
+                            padding-left: 24px;
+                            color: $tipsColor;
+                            font-size: 1.8rem;
+                            line-height: 2;
+                        }
+                    }
+                    &:nth-child(2) {
+                        margin: 0 100px;
+                    }
+                }
+            }
+            .content-text {
+                width: 945px;
+                margin: 60px auto 0;
+                border-top: 1px solid #a6a6a6;
+                border-bottom: 1px solid #a6a6a6;
+                text-align: center;
+                color: $colorBlue;
+                padding: 40px 0px;
+                font-size: 1.6rem;
+            }
+        }
+        .third.section {
+            position: relative;
+            .content {
+                .row {
+                    background: #ffffff;
+                    width: 925px;
+                    margin: 0 auto;
+                    padding: 40px 0;
+                    text-align: justify;
+                    display: flex;
+                    justify-content: space-around;
+                }
+            }
+            .footer {
+                position: absolute;
+                bottom: 7%;
+                left: 50%;
+                margin-left: -475px;
+                span {
+                    font-size: 1.8rem;
+                    line-height: 25px;
+                    margin-right: 106px;
+                    img {
+                        margin-right: 3px;
+                        position: relative;
+                        top: 3px;
+                    }
+                }
+            }
+            .copyright {
+                width: 300px;
+                position: absolute;
+                bottom: 0%;
+                left: 50%;
+                margin-left: -150px;
+                padding: 10px 0;
+                text-align: center
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1366px) {
+    .content-text {
+        margin: 40px auto 0 !important;
+        padding: 40px 0px !important;
+    }
+    .section {
+        .head {
+            padding: 9% 0 5% !important;
+        }
+        .block {
+            &:after {
+                bottom: -40px !important;
+            }
+        }
+        .head-bot {
+            padding: 12% 0 7% !important;
+        }
+    }
+}

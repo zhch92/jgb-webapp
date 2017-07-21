@@ -1,0 +1,452 @@
+@import "../define";
+#account {
+    width: 1200px;
+    margin: 80px auto 0 auto;
+    text-align: center;
+    .left {
+        float: left;
+        width: 198px;
+        text-align: center;
+        border: 1px solid $borderColor;
+        background-color: #ffffff;
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.6rem;
+            padding: 12px 0;
+            border-left: 2px solid transparent;
+            span {
+                padding-left: 5px;
+                cursor: pointer;
+            }
+            i {
+                padding-right: 10px;
+            }
+            &:nth-child(4) {
+                /*调整爱心值文字间距*/
+                span {
+                    letter-spacing: .6rem;
+                }
+            }
+            &.active {
+                color: $colorBlue;
+                background-color: #f5f5f5;
+                border-left: 2px solid $colorBlue;
+            }
+        }
+        .item1 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.4rem;
+            padding: 10px 0;
+            border-left: 2px solid transparent;
+            span {
+                padding-left: 20px;
+                cursor: pointer;
+            }
+            i {
+                padding-right: 10px;
+            }
+            &.active {
+                color: $colorBlue;
+                background-color: #f5f5f5;
+                border-left: 2px solid $colorBlue;
+            }
+        }
+    }
+    .right {
+        display: inline-block;
+        width: 990px;
+        margin-left: 10px;
+        text-align: left;
+    }
+    .modal-container {
+        width: 400px;
+        height: auto;
+        margin-top: -10%;
+        background-color: $colorWhite;
+        box-shadow: 0 0 15px 0 rgba(0, 0, 0, .3);
+        .title {
+            position: relative;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px dotted $borderColor;
+            span {
+                padding: 13px 20px;
+                font-size: 1.8rem;
+                letter-spacing: 1.5px;
+                letter-spacing: 5px;
+                color: $colorBlue;
+                border-bottom: 1px solid $colorBlue;
+            }
+            a {
+                position: absolute;
+                top: 15px;
+                right: 10px;
+                font-size: 2rem;
+                color: $disableColor;
+            }
+        }
+        .triangle {
+            width: 0;
+            height: 0;
+            margin: 0 auto;
+            border-left: 3px solid transparent;
+            border-right: 3px solid transparent;
+            border-top: 4px solid $colorBlue;
+        }
+        .content {
+            width: 84%;
+            margin: 0 auto;
+            padding: 20px 0 10px 0;
+            text-align: left;
+            // background: red;
+            .hint {
+                padding-bottom: 10px;
+                p {
+                    padding: 0;
+                    margin: 0;
+                    color: $colorBlue;
+                    font-size: 1.4rem;
+                }
+            }
+            .row {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                padding-bottom: 20px;
+                &.hint{
+                    margin-top: -10px;
+                    span{
+                        opacity: 0
+                    }
+                    p{
+                        color: #999;
+                    }
+                }
+                span {
+                    font-size: 1.5rem;
+                    &.required {
+                        position: relative;
+                        &:before {
+                            content: '*';
+                            display: block;
+                            position: absolute;
+                            top: 50%;
+                            margin-top: -5px;
+                            left: -10px;
+                            color: red;
+                        }
+                    }
+                }
+                select {
+                    width: 240px;
+                    height: 30px;
+                    border: 1px solid $borderColor;
+                    background-color: $colorWhite;
+                    outline: none;
+                }
+                input {
+                    height: 30px;
+                    padding-left: 10px;
+                    border: 1px solid $borderColor;
+                }
+                .select {
+                    width: 240px;
+                    padding: 6px 0;
+                    font-size: 1.6rem;
+                    color: $colorBlack;
+                    border: 1px solid $borderColor;
+                    &.active {
+                        color: $numberColor;
+                        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAAAjCAMAAACKA+foAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAjVBMVEUAAAD/cgD/cgD/cgD/cgD/cgD/cgD/cgD/cgD/cgD/cgD/cgD/cgD/cgD/cgD/cgD/cgD/cgD/cgD/cgD/cgD/cgD/cgD/dgj/3sP/3cH/m0v/t33/xZb/kDb/5dD/cwH/4sv/w5P/dAT/eQz/+/f/fhb/tHf/4Mf/eg//5tH/lkL/oFT/7d//snMAAACm7pHVAAAAFnRSTlMABZYUvy7fUvMBf/4MrCDQP+pn+sA+rRorTwAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxIAAAsSAdLdfvwAAACpSURBVGje7ZlnEoIwFAYjKFZELM+CCEq13f96ahT8ww327Q12JpN8szGCxYiBoupEVJ2IqhNRdSKqTkTViag6EVXn0XOo6m6fWmkGHjVQDUfQNjeeTKFZcuZTi+w8oMboRUjt8MuVtd7uaOrvHfNlf4Cpu+ufeXSEHXi7Yz7Ep4SlbndMer5Ilheoa67ZMWVVX2+oG77dMXJ/PFGP23/H0P7XN6F0qmN5AedHQM9MABcdAAAAAElFTkSuQmCC) no-repeat;
+                        background-size: 100% 100%;
+                        border-color: $numberColor;
+                    }
+                }
+                .reser-all {
+                    height: 30px;
+                    margin-left: 5px;
+                    padding: 5px 5px 0 5px;
+                    font-size: 1.5rem;
+                    color: $numberColor;
+                    border: 1px solid $numberColor;
+                }
+                // #money{
+                //     width: 100%;
+                // }
+                &.err-msg {
+                    height: 30px;
+                    padding-bottom: 0px;
+                    p {
+                        margin: 0 auto;
+                        padding: 0px;
+                        font-size: 1.6rem;
+                        color: $colorRed;
+                        text-align: center;
+                    }
+                }
+                // &:last-child {
+                //     padding-bottom: 0;
+                // }
+            }
+        }
+        .comment {
+            .detail {
+                padding: 20px 0;
+                span {
+                    display: block;
+                    line-height: 1.8;
+                    em {
+                        color: $colorBlue;
+                    }
+                }
+                >span {
+                    font-size: 1.4rem;
+                    color: $tipsColor;
+                }
+            }
+        }
+        .btns {
+            width: 66%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            .btn {
+                width: 110px;
+                padding: 5px 0;
+                font-size: 1.6rem;
+                color: $colorWhite;
+                border-radius: 5px;
+                &:first-child {
+                    background-color: $colorBlue;
+                }
+                &:last-child {
+                    background-color: $disableColor;
+                }
+                &.disabled {
+                    background-color: $disableColor;
+                    cursor: default;
+                }
+            }
+            span {
+                display: block;
+            }
+        }
+    }
+    .order-buy {
+        .content {
+            .row {
+                input {
+                    width: 185px;
+                }
+            }
+        }
+    }
+    .order-sell {
+        .content {
+            .row {
+                input {
+                    width: 165px;
+                }
+            }
+        }
+    }
+    .buy {
+        width: 600px;
+        margin-top: 0;
+        .content {
+            width: 56%;
+            .row {
+                input {
+                    width: 210px;
+                }
+            }
+        }
+        .comment {
+            width: 90%;
+            margin: 0 auto;
+            .detail {
+                .bank-info {
+                    margin: 10px 0;
+                    padding: 10px 10px;
+                    background-color: $bgColor;
+                    font-size: 1.6rem;
+                    color: $colorBlack;
+                    border: 1px solid $borderColor;
+                }
+                span {
+                    text-align: left;
+                    em {
+                        color: $colorRed;
+                    }
+                }
+            }
+        }
+    }
+    .sell {
+        width: 440px;
+        .content {
+            width: 75%;
+            .row {
+                input {
+                    width: 240px;
+                    // width: 165px;
+                }
+            }
+        }
+        .btns {
+            div {
+                width: 120px;
+                a {
+                    width: 100%;
+                    margin-bottom: 5px;
+                    &.disable {
+                        background-color: $disableColor !important;
+                        cursor: not-allowed;
+                    }
+                }
+                span {
+                    font-size: 1.4rem;
+                    color: $tipsColor;
+                }
+                &:first-child {
+                    a {
+                        background-color: $numberColor;
+                    }
+                }
+                &:last-child {
+                    a {
+                        background-color: $colorBlue;
+                    }
+                }
+            }
+        }
+    }
+    .auth {
+        width: 490px;
+        .content {
+            width: 76%;
+            input {
+                width: 280px;
+                &#txn-amount::-webkit-input-placeholder {
+                    direction: rtl;
+                }
+            }
+            .row {
+                .licence-text {
+                    margin-left: -30px;
+                }
+                .select {
+                    width: 280px;
+                }
+                .investor-text {
+                    margin-left: -63px;
+                }
+                .tips {
+                    margin: 0 auto;
+                    font-size: 1.4rem;
+                    color: $tipsColor;
+                    em {
+                        font-style: normal;
+                        color: #fb565c;
+                    }
+                }
+            }
+        }
+    }
+    .current {
+        width: 595px;
+        .content {
+            .row {
+                position: relative;
+                .select {
+                    width: 420px;
+                    text-align: left;
+                    padding: 6px;
+                    &.active {
+                        color: #1b65ce;
+                        border-color: #1b65ce;
+                        background-size: 100% 100% !important;
+                    }
+                }
+                input {
+                    width: 420px;
+                }
+                input::-ms-input-placeholder {
+                    text-align: right;
+                }
+                input::-webkit-input-placeholder {
+                    text-align: right;
+                }
+                .account-list {
+                    position: absolute;
+                    top: 30px;
+                    right: 4px;
+                    width: 418px;
+                    background: #fff;
+                    border: 1px solid $borderColor;
+                    border-top: none;
+                    border-bottom: none;
+                    z-index: 999;
+                    max-height: 130px;
+                    overflow: auto;
+                    ul {
+                        padding: 0px 0px;
+                        margin: 0;
+                    }
+                    li {
+                        list-style: none;
+                        line-height: 25px;
+                        border-bottom: 1px solid $borderColor;
+                        padding: 0px 10px;
+                        width: 398px;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        &:hover {
+                            background: #ececec;
+                        }
+                        &:last-child {
+                            text-align: center;
+                            a {
+                                cursor: pointer;
+                            }
+                            &:hover {
+                                background: #ffffff;
+                            }
+                        }
+                    }
+                }
+                .list-arrow {
+                    width: 29px;
+                    height: 29px;
+                    position: absolute;
+                    right: 6px;
+                    top: 0;
+                    &:after {
+                        content: '';
+                        width: 10px;
+                        height: 10px;
+                        display: block;
+                        border: 1px solid #333;
+                        border-left-color: transparent;
+                        border-top-color: transparent;
+                        position: absolute;
+                        right: 10px;
+                        top: 5px;
+                        transform: rotate(45deg);
+                    }
+                    &.arrow-top {
+                        transition: rotate(90deg) 2s;
+                    }
+                }
+            }
+        }
+    }
+}

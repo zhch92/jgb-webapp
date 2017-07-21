@@ -1,0 +1,173 @@
+@import "define";
+
+/* 全局样式 */
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: $fontSize;
+    font-family: $fontFamily;
+}
+
+body {
+    min-width: $minWidth;
+    background-color: $bgColor;
+    #ie-tips {
+        width: 100%;
+        background-color: yellow;
+        text-align: center;
+        span {
+            display: block;
+            padding: 5px 0;
+            color: red;
+            font-size: 16px;
+        }
+    }
+    #main {
+        position: relative;
+        width: 100%;
+        min-height: 100%;
+    }
+    .mainActive{
+        height: 100%;
+        overflow: hidden;
+    }
+    button {
+        appearance: none;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        font-family: $fontFamily;
+    }
+    input,
+    textarea {
+        appearance: none;
+        outline: none;
+        font-family: $fontFamily;
+        box-sizing: border-box;
+    }
+    input:focus {
+        border-color: $colorBlue !important;
+    }
+    em {
+        font-style: normal;
+    }
+    .btn {
+        display: inline-block;
+        text-align: center;
+        user-select: none;
+        cursor: pointer;
+        box-sizing: border-box;
+    }
+    /* 调整日历字体 */
+    .flatpickr-calendar {
+        font-size: 1.5rem !important;
+    }
+    .v-align-left {
+        text-align: left !important;
+    }
+    .v-align-middle {
+        text-align: center !important;
+    }
+    .v-align-right {
+        text-align: right !important;
+    }
+    /* 转场动画 */
+    .router-enter-active {
+        animation: fadeIn .5s;
+    }
+    .router-leave-active {
+        animation: fadeOut .2s;
+    }
+    /* 弹窗动画 */
+    .modal-enter-active {
+        animation: zoomIn .3s;
+    }
+    .modal-leave-active {
+        animation: zoomOut .2s;
+    }
+    /* 下/上动画 */
+    .downup-enter-active {}
+    .downup-leave-active {}
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    @keyframes fadeOut {
+        from {
+            opacity: 1;
+        }
+        to {
+            opacity: 0;
+        }
+    }
+    @keyframes zoomIn {
+        from {
+            transform: scale(0);
+        }
+        to {
+            transform: scale(1);
+        }
+    }
+    @keyframes zoomOut {
+        from {
+            transform: scale(1);
+        }
+        to {
+            transform: scale(0);
+        }
+    }
+    @keyframes slideInDown {
+        from {
+            transform: translate3d(0, -100%, 0);
+            visibility: visible;
+        }
+        to {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+    @keyframes slideOutUp {
+        from {
+            transform: translate3d(0, 0, 0);
+        }
+        to {
+            visibility: hidden;
+            transform: translate3d(0, -100%, 0);
+        }
+    }
+    /* 进度条样式 */
+    .nanobar {
+        width: 100%;
+        height: 2px;
+        z-index: 9999;
+        top: 0;
+        .bar {
+            width: 0;
+            height: 100%;
+            transition: height .3s;
+            background: $colorBlue;
+        }
+    }
+}
+
+// 清除浮动
+.clearfix {
+    zoom: 1;
+    &:after {
+        content: '';
+        display: block;
+        height: 0;
+        clear: both;
+    }
+}

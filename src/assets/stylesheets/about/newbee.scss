@@ -1,0 +1,37 @@
+@import "../define";
+
+#newbee {
+    border: 1px solid $borderColor;
+    background-color: $colorWhite;
+    padding-left: 15px;
+    .head {
+        height: 41px;
+        border-bottom: 1px solid $borderColor;
+        span {
+            display: inline-block;
+            padding: 10px;
+            font-size: 1.6rem;
+            user-select: none;
+            cursor: pointer;
+            &.active {
+                color: $colorBlue;
+                border-bottom: 2px solid $colorBlue;
+            }
+        }
+    }
+    .content {
+        .row {
+            padding-right: 15px;
+            p {
+                margin: 15px 0 15px 0;
+                font-size: 1.6rem;
+            }
+            img {
+                width: 100%;
+            }
+            &:last-child {
+                margin-bottom: 15px;
+            }
+        }
+    }
+}

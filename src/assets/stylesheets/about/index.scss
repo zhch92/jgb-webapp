@@ -1,0 +1,35 @@
+@import "../define";
+
+#about {
+    width: 1200px;
+    margin: 100px auto 0 auto;
+    color: $colorBlack;
+    .left {
+        float: left;
+        width: 198px;
+        text-align: center;
+        border: 1px solid $borderColor;
+        background-color: $titleColor;
+        .item {
+            height: 40px;
+            padding-top: 15px;
+            border-left: 2px solid transparent;
+            font-size: 1.6rem;
+            span {
+                padding-right: 10px;
+                cursor: pointer;
+            }
+        }
+        .item.active {
+            color: $colorBlue;
+            background-color: $colorWhite;
+            border-left: 2px solid $colorBlue;
+        }
+    }
+    .right {
+        display: inline-block;
+        width: 990px;
+        margin-left: 10px;
+        margin-bottom: 20px;
+    }
+}

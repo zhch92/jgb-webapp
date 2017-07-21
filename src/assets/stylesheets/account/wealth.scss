@@ -1,0 +1,233 @@
+@import "../define";
+
+#wealth {
+    color: $colorBlack;
+    .info {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        background-color: $colorWhite;
+        border: 1px solid $borderColor;
+        border-bottom: none;
+        span {
+            font-size: 1.3rem;
+            em {
+                color: $tipsColor;
+            }
+        }
+    }
+    .base {
+        .first.section {
+            margin-top: 20px;
+            background-color: $colorWhite;
+            border: 1px solid $borderColor;
+            .profit {
+                height: 138px;
+                div {
+                    width: 33%;
+                    height: 100%;
+                    display: inline-block;
+                    vertical-align: top;
+                    text-align: center;
+                    box-sizing: border-box;
+                    p {
+                        margin: 0;
+                        line-height: 1.5;
+                        &:first-child {
+                            padding: 14px 0 7px 0;
+                            font-size: 1.6rem;
+                            border-bottom: 1px dotted $borderColor;
+                        }
+                        &:last-child {
+                            padding: 30px;
+                            font-size: 2.6rem;
+                            color: $numberColor;
+                        }
+                    }
+                }
+                .money {
+
+                }
+                .yesterday-profit {
+                    border-left: 1px dotted $borderColor;
+                    border-right: 1px dotted $borderColor;
+                }
+            }
+        }
+        .second.section {
+            margin: 5px 0 0 0;
+            text-align: right;
+            span {
+                font-size: 1.1rem;
+                color: $tipsColor;
+            }
+        }
+        .third.section {
+            margin: 10px 0 20px 0;
+            .title {
+                height: 35px;
+                span {
+                    margin: 0;
+                    padding-left: 10px;
+                    font-size: 1.8rem;
+                    border-left: 2px solid $colorBlue;
+                em{
+                    color: red;
+                    font-size: 1.4rem;
+                    margin-left: 10px;
+                }
+                }
+            }
+            .content {
+                border: 1px solid $borderColor;
+                border-bottom: none;
+                background-color: $colorWhite;
+                .organ {
+                    .title {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        border-bottom: 1px solid $borderColor;
+                        span {
+                            font-size: 1.6rem;
+                            color: $colorBlue;
+                            border: none;
+                        }
+                        a {
+                            float: right;
+                            margin-right: 20px;
+                            width: 80px;
+                            padding: 2px;
+                            font-size: 1.6rem;
+                            color: $colorBlue;
+                            border: 1px solid $colorBlue;
+                            border-radius: 5px;
+                        }
+                    }
+                    .products {
+                        display: none;
+                        .product {
+                            padding: 20px 20px 0 20px;
+                            background-color: $colorWhite;
+                            border-bottom: 1px dotted $borderColor;
+                            .top {
+                                margin-bottom: 10px;
+                                .name {
+                                    display: flex;
+                                    align-items: center;
+                                    span {
+                                        margin-left: 10px;
+                                        font-size: 1.8rem;
+                                    }
+                                }
+                            }
+                            .bottom {
+                                height: 90px;
+                                .block {
+                                    display: inline-block;
+                                    .intro {
+                                        color: $tipsColor;
+                                    }
+                                    .number {
+                                        color: $numberColor;
+                                    }
+                                    p {
+                                        margin: 0;
+                                        font-size: 1.6rem;
+                                        line-height: 1.5;
+                                    }
+                                    &:nth-child(1), &:nth-child(2), &:nth-child(3) {
+                                        p {
+                                            margin-left: 20px;
+                                            line-height: 2.2;
+                                            &.intro {
+                                                font-size: 1.4rem;
+                                            }
+                                            &.number {
+                                                font-size: 1.6rem;
+                                            }
+                                  }
+                                    }
+                                    &:nth-child(1) {
+                                        width: 25%;
+                                    }
+                                    &:nth-child(2) {
+                                        width: 18%;
+                                        border-left: 1px dotted $borderColor;
+                                        border-right: 1px dotted $borderColor;
+                                    }
+                                    &:nth-child(3) {
+                                        width: 18%;
+                                        border-right: 1px dotted $borderColor;
+                                    }
+                                    &:nth-child(4) {
+                                        width: 20%;
+                                        p {
+                                            margin-left: 20px;
+                                            font-size: 1.4rem;
+                                        }
+                                    }
+                                    &:nth-child(5) {
+                                        float: right;
+                                        display: flex;
+                                        flex-direction: column;
+                                        a {
+                                            width: 90px;
+                                            padding: 5px 0;
+                                            font-size: 1.4rem;
+                                            border-radius: 5px;
+                                            &.buy {
+                                                margin-bottom: 10px;
+                                                color: $colorBlue;
+                                                border: 1px solid $colorBlue;
+                                            }
+                                            &.sell {
+                                                color: $colorWhite;
+                                                background-color: $colorBlue;
+                                            }
+                                        }
+                                    }
+                                    &.cx1 {
+                                        width: 15%;
+                                        p {
+                                            line-height: 2.2;
+                                            &:nth-child(2) {
+                                                font-size: 1.6rem;
+                                            }
+                                        }
+                                    }
+                                    &.cx2 {
+                                        margin-top: -2px;
+                                        p {
+                                            font-size: 1.4rem;
+                                            line-height: 2.3;
+                                        }
+                                    }
+                                }
+                            }
+                            &:last-child {
+                                border-bottom: 1px solid $borderColor;
+                            }
+                        }
+                    }
+                    &:first-child {
+                        .title {
+                            border-top: none;
+                        }
+                    }
+                }
+                .tips {
+                    height: 135px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    p {
+                        margin: 10px 0 0 10px;
+                        font-size: 2rem;
+                        color: $tipsColor;
+                    }
+                }
+            }
+        }
+    }
+}
