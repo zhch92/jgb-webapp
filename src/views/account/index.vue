@@ -127,14 +127,12 @@
                 </div>
                 <div class="btns" v-else>
                     <div>
-                        <a class="btn" @click="reser($event, 3, 1)" v-if="product.totalAsset>200">快速赎回</a>
-                        <a class="btn disabled"  v-else>快速赎回</a>
+                        <a class="btn" @click="reser($event, 3, 1)">快速赎回</a>
                         <span>当日不计算收益</span>
                         <span v-text="isQDZ ? '单日限额5000万元' : ''"></span>
                     </div>
                     <div>
-                        <a class="btn" @click="reser($event, 3, 0)" v-if="product.totalAsset>200">普通赎回</a>
-                        <a class="btn disabled"  v-else>普通赎回</a>
+                        <a class="btn" @click="reser($event, 3, 0)" >普通赎回</a>
                         <span>当日计算收益</span>
                     </div>
                 </div>
@@ -418,11 +416,12 @@ export default {
             let $acctId = $content.find('#acct-id');
             let money = $input.val();
             let dataObj = this.product;
+            const remaining=this.product.totalAsset-Number(money.replace(/,/g, ''));
             if (!$prodcut.hasClass('active')) {
                 window.layer.tips('请选择产品', $prodcut);
             } else if (money.length== 0) {
                 window.layer.tips('份额不能为空', $input);
-            } else if ( this.product.totalAsset-Number(money.replace(/,/g, '')) <200) {
+            } else if (remaining<200 && remaining!=0) {
                 window.layer.tips('赎回后份额余额不得小于200', $input);
             } else if (modalType == 2 && dataObj.prodCode == '000509' && money > 20000000) {
                 // 广发申购限额
