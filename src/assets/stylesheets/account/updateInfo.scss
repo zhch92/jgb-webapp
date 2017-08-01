@@ -177,6 +177,20 @@
                                     margin-left: 5px;
                                 }
                             }
+                            .btn{
+                                background: #1b65ce;
+                                color: #ffffff;
+                                text-align: center;
+                                line-height: 20px;
+                                padding: 6px 10px;
+                                border-radius: 3px;
+                                width: 80px;
+                                font-size: 12px;
+                                &.disabled{
+                                    opacity: .6;
+                                    cursor: not-allowed;
+                                }
+                            }
                             i {
                                 min-width: 14px;
                                 font-size: 1.4rem;

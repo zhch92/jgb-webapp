@@ -36,6 +36,8 @@ const config = {
             branchBank: basePath + 'organ/getPayBranchBank',
             taInfo: basePath + 'organ/taInfo',
             allTaAcct: basePath + 'organ/allTaAcct',
+            remain:basePath+'products/remain'
+
         },
         _post: {
             uploadImg: basePath + 'file',
@@ -43,6 +45,7 @@ const config = {
             register: basePath + 'organ/reg',
             forget: basePath + 'organ/pass',
             sms: basePath + 'sms',
+            hxSms: basePath + 'Sms/hx',
             account: basePath + 'organ/tradeInfo',
             reser: basePath + 'products/reser',
             quickWithdraw: basePath + 'products/quickWithdraw',

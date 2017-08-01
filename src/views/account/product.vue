@@ -2,6 +2,63 @@
     <div id="product">
         <div class="top-nav"><span class="active" @click='changeActive($event)'>活期产品</span><span @click='changeActive($event)'>定期产品</span></div>
         <template v-if='!current'>
+        <div class="third section">
+                <div class="title">
+                    <span>券商资管</span>
+                </div>
+                <div class="content">
+                    <template v-for="(item, index) in filterMarketType(2)" v-if="item.issueId===4">
+                        <div class="item" :class="{ cx_last: index == 1 }">
+                            <div class="top">
+                                <div class="name">
+                                    <img src="../../assets/images/account/product/product.png" alt="">
+                                    <a :href="item.linkUrl" target="_blank">{{ item.name }}</a>
+                                </div>
+                            </div>
+                            <div class="bottom regular">
+                                <div class="block">
+                                    <p class="intro">七日年化收益率</p>
+                                    <p class="number">{{ item.seventhYearYield | toPercent }}</p>
+                                </div>
+                                <div class="block">
+                                    <p class="intro">万份收益</p>
+                                    <p class="number">
+                                        {{ item.yieldPerMillion | keepDecimal }}
+                                        <span class="suffix">元</span>
+                                    </p>
+                                </div>
+                                <div class="block">
+                                    <p>
+                                        <em class="intro">投资期限：</em>
+                                        <em>每日申赎</em>
+                                    </p>
+                                    <p>
+                                        <em class="intro">更新日期：</em>
+                                        <em>{{ item.uptTime | formatDate('yyyy.MM.dd') }}</em>
+                                    </p>
+                                    <p>
+                                        <span class="intro">
+                                        <em>爱</em>
+                                        <em>心</em>
+                                        <em>值</em>
+                                    </span>
+                                        <em class="intro">：</em>
+                                        <em>{{item.pointRate | tonIteger}}/亿元（日终存量）</em>
+                                    </p>
+                                </div>
+                                <div class="block">
+                                    <template>
+                                        <a class="buy btn" @click="openModal($event, 2, 2, 0)" :data-id="item.id" :data-issue="item.issueId" :data-name="item.name" :data-code="item.prodCode" :data-forwardType='item.carryForwardType'>申购</a>
+                                        <a class="sell btn" @click="openModal($event, 3, 2, 1)" :data-id="item.id" :data-issue="item.issueId" :data-name="item.name" :data-code="item.prodCode">赎回</a>
+                                        <router-link :to="{ name: 'hxAccount' }" class="gf-kh btn">开户</router-link>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+
+                </div>
+            </div>
             <div class="first section">
                 <div class="title">
                     <span>场内基金</span>
@@ -58,7 +115,7 @@
                     <span>场外基金</span>
                 </div>
                 <div class="content">
-                    <template v-for="(item, index) in filterMarketType(2)">
+                    <template v-for="(item, index) in filterMarketType(2)"  v-if="item.issueId!=4">
                         <div class="item" :class="{ cx_last: index == 1 }">
                             <div class="top">
                                 <div class="name">
@@ -113,6 +170,7 @@
                     </template>
                 </div>
             </div>
+            
         </template>
         
         <template v-if='current'>
@@ -282,6 +340,7 @@ export default {
                     carryForwardType:$dom.data('forwardtype'),
                     txnType: txnType,
                     totalAsset: 0,
+                    remain:0,
                     marketType: marketType
                 },
                 getAsset: false,
@@ -290,7 +349,6 @@ export default {
             if (modalType == 1 || modalType == 3) {
                 objData.getAsset = true;
             }
-            console.log(objData)
             eventHub.$emit('showModal', objData);
         }
     }

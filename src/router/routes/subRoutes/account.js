@@ -30,6 +30,10 @@ const account = {
             name: 'updateInfo',
             component: (resolve) => require(['../../../views/account/updateInfo'], resolve)
         }, {
+            path: 'hxAccount',
+            name: 'hxAccount',
+            component: (resolve) => require(['../../../views/account/hxAccount'], resolve)
+        }, {
             path: 'accountInfo',
             name: 'accountInfo',
             component: (resolve) => require(['../../../views/account/accountInfo'], resolve)

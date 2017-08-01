@@ -46,7 +46,8 @@
                         <span>申购金额：</span>
                         <input v-if='isQDZ' id="money" type="text" placeholder="单日限额2000万元" v-model="moneyThousands">
                         <input v-else-if='isQDZA' id="money" type="text" placeholder="500万(含)以上请申购广发货币B" v-model="moneyThousands">
-                        <input v-else id="money" type="text" placeholder="500万起投" v-model="moneyThousands">
+                        <input v-else-if='isB' id="money" type="text" placeholder="500万起投" v-model="moneyThousands">
+                        <input v-else id="money" type="text" placeholder="100万起投" v-model="moneyThousands">
                         <span>（元）</span>
                     </div>
                 </div>
@@ -58,7 +59,7 @@
                     <div class="detail">
                         <template v-for="item in taInfo"><span v-if="selected==item.acctId">请以贵公司开户银行({{ item.bankName }}尾号{{ item.bankAcctNo | numberLen }}），将预约资金汇入以下银行账户</span></template>
                         <div class="bank-info">
-                            <span>银行户名：广发基金管理有限公司直销专户</span>
+                            <span>银行户名：{{(isQDZ||isQDZA||isB)?'广发基金管理有限公司直销专户':'华信'}}</span>
                             <span>银行账号：3602 0001 2983 8383 823</span>
                             <span>开户行：中国工商银行广州第一支行</span>
                             <span>跨行大额支付号：1025 8100 0013</span>
@@ -76,6 +77,7 @@
                 </div>
             </div>
         </c-modal>
+        <!-- 赎回 -->
         <c-modal v-if="showSell">
             <div class="sell modal-container" slot="modal-container">
                 <div class="title">
@@ -98,12 +100,14 @@
                     </div>
                     <div class="row">
                         <span>赎回份额：</span>
-                        <input id="money" type="text" :placeholder="'最大份额：' + formatAsset+' 份'" v-model="moneyThousands">
+                        <input id="money" type="text" :placeholder="'最大份额：' + formatRemain+' 份'" v-model="moneyThousands" v-if="product.issueId==4" key='1'>
+                        <input id="money" type="text" :placeholder="'最大份额：' + formatAsset +' 份'" v-model="moneyThousands" v-else key="2">
                         <!-- <a class="btn reser-all" @click="reserAll($event, 1)">全部赎回</a> -->
                     </div>
                     <div class="row hint">
                         <span>赎回份额：</span>
-                        <p>赎回后份额余额请勿低于200</p>
+                        <p v-if="product.issueId!=4">赎回后份额余额请勿低于200</p>
+                        <p v-else>赎回后份额余额不得低于100万</p>
                     </div>
                 </div>
                 <div class="comment">
@@ -116,7 +120,7 @@
                         <span><em>{{ product.name }}</em>赎回交易</span>
                     </div>
                 </div>
-                <div class="btns" v-if="isB">
+                <div class="btns" v-if="isB || isHX">
                     <div>
                         <a class="btn" @click="reser($event, 3, 0)">确认赎回</a>
                         <span>当日计算收益</span>
@@ -138,6 +142,7 @@
                 </div>
             </div>
         </c-modal>
+        <!-- 确权 -->
         <c-modal v-if="showAuth">
             <div class="auth modal-container" slot="modal-container">
                 <div class="title">
@@ -278,6 +283,7 @@ export default {
             systemList: Object.freeze([
                 '企业信息-companyInfo',
                 '广发基金开户-updateInfo',
+                '华信资管开户-hxAccount',
                 '账户信息-accountInfo',
                 '修改密码-changePwd',
                 '反馈信息-feedback',
@@ -291,6 +297,7 @@ export default {
                 issueId: 0,
                 txnType: 0,
                 totalAsset: 0,
+                remain:0,
                 marketType: 1
             },
             bankInfo: {
@@ -347,8 +354,22 @@ export default {
             // 场内
             return this.product.marketType == 1;
         },
+        isHX(){
+            return this.product.issueId == 4;
+
+        },
         formatAsset() {
             let value = this.product.totalAsset;
+            if (!isNaN(value) && value != null) {
+                let num = parseFloat(value).toFixed(2);
+                let regx = /(\d{1,3})(?=(\d{3})+(?:\.))/g;
+                return num.replace(regx, "$1,");
+            } else {
+                return '0.00';
+            }
+        },
+                formatRemain() {
+            let value = this.product.remain;
             if (!isNaN(value) && value != null) {
                 let num = parseFloat(value).toFixed(2);
                 let regx = /(\d{1,3})(?=(\d{3})+(?:\.))/g;
@@ -417,17 +438,23 @@ export default {
             let money = $input.val();
             let dataObj = this.product;
             const remaining=this.product.totalAsset-Number(money.replace(/,/g, ''));
+            const remain=this.product.remain-Number(money.replace(/,/g, ''));
             if (!$prodcut.hasClass('active')) {
                 window.layer.tips('请选择产品', $prodcut);
             } else if (money.length== 0) {
                 window.layer.tips('份额不能为空', $input);
-            } else if (remaining<200 && remaining!=0) {
+            } else if (modalType==3&&this.product.issueId==4&&remain<10000000 && remain!=0) {
+                window.layer.tips('赎回后份额余额不得低于于100万', $input);
+            } else if (modalType==3&&this.product.issueId!=4&&remaining<200 && remaining!=0){
                 window.layer.tips('赎回后份额余额不得小于200', $input);
-            } else if (modalType == 2 && dataObj.prodCode == '000509' && money > 20000000) {
+
+            }else if (modalType == 2 && dataObj.prodCode == '000509' && money > 20000000) {
                 // 广发申购限额
                 window.layer.tips('超出申购限额', $input);
             } else if (modalType == 2 && dataObj.prodCode == '270014' && money < 50000000) {
                 window.layer.tips('500万起投', $input);
+            } else if (modalType == 2 && dataObj.issueId == 4 && money < 10000000) {
+                window.layer.tips('100万起投', $input);
             } else if (modalType == 2 && dataObj.prodCode == '270004' && money == 0) {
                 window.layer.tips('申购金额应大于0', $input);
             } else if (dataObj.prodCode == '270014' && reserType == 1) {
@@ -436,6 +463,7 @@ export default {
             } else {
                 money = Number(money.replace(/,/g, ''));
                 (modalType == 0 || modalType == 2) ? money = money: null;
+                console.log([dataObj.id,money,dataObj.issueId,dataObj.txnType,$acctId.val(),modalType])
                 (reserType == 0) ? productService.reser(dataObj.id, money, dataObj.issueId, dataObj.txnType, $acctId.val(), modalType, this): productService.quickWithdraw(dataObj.id, money, $acctId.val(), this);
                 this.closeModal(modalType);
             }
@@ -562,15 +590,21 @@ export default {
             let _self = this;
             // _self.$root.popping = true;
             _self.product = objData.product;
-            if (objData.getAsset) {
+            if (objData.getAsset&&objData.product.issueId!=3&&objData.product.issueId!=4) {
                 productService.getTotalAsset(objData.product.id, _self).then((data) => {
                     objData.product.totalAsset = data;
                 })
             }
-            if (objData.product.issueId == 2) {
-                productService.getTaInfo(2, _self).then((data) => {
+            if (objData.getAsset&&objData.product.issueId==4) {
+                productService.getRemain(objData.product.prodCode, _self).then((data) => {
+                    objData.product.remain = data.remainAmount;
+                })
+            }
+            if (objData.product.issueId == 2||objData.product.issueId == 4) {
+                productService.getTaInfo(objData.product.issueId, _self).then((data) => {
                     _self.taInfo = data;
-                    let selected = data[0].acctId;
+
+                    let selected = data[0]?data[0].acctId:{};
                     _self.selected = selected;
                 })
             }
