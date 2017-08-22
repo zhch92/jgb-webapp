@@ -10,9 +10,9 @@
                         产品开户
                         <em v-if="urlType == 1">*客户以所管理产品的名义开户</em>
                     </a>
-                    <a class="btn" :class="{ active: urlType == 2 }" @click="urlType = 2">
+                    <a class="btn" :class="{ active: urlType == 3 }" @click="urlType = 3">
                         企业开户
-                        <em v-if="urlType == 2">*客户以自身企业名义开户</em>
+                        <em v-if="urlType == 3">*客户以自身企业名义开户</em>
                     </a>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                             <div class="right"><span></span></div>
                         </div>
                         <div class="row">
-                            <div class="left"><span>企业电话（手机号）:</span></div>
+                            <div class="left"><span>企业电话:</span></div>
                             <div class="middle">
                                 <input id="mobile" type="tel" v-model="tradeInfos.telNo">
                             </div>
@@ -46,7 +46,7 @@
                         <div class="row">
                             <div class="left"><span>企业地址 :</span></div>
                             <div class="middle">
-                                <input id="organAddress" type="tel" v-model="tradeInfos.telNo">
+                                <input id="organAddress" type="tel" v-model="tradeInfos.organAddress">
                             </div>
                             <div class="right"><span></span></div>
                         </div>
@@ -102,10 +102,10 @@
                                     <i class="fa fa-check-circle"></i>
                                 </div>
                             </div>
-                            <div class="row">
+                            <!-- <div class="row">
                                 <span class="tips">注：使用产品开户时，需填写基金管理人公司代码</span>
                             </div>
-                            <div class="row">
+ -->                            <div class="row">
                                 <div class="left"><span>有效期至:</span></div>
                                 <div class="middle">
                                     <input v-if="tradeInfos.licenceExpireDate!=null && timeFormat(tradeInfos.licenceExpireDate, 'yyyy-MM-dd').length==10" id="licence-expiredate" type="text" data-first="true" @mouseenter="addCalender($event)" :value="timeFormat(tradeInfos.licenceExpireDate, 'yyyy-MM-dd')">
@@ -143,7 +143,7 @@
                                 </div>
                             </div>
                         </template>
-                        <template v-if="urlType == 1">
+                        
                             <div class="row">
                                 <div class="left"><span>基金产品名称:</span></div>
                                 <div class="middle">
@@ -164,6 +164,7 @@
                                     <i class="fa fa-check-circle"></i>
                                 </div>
                             </div>
+                            <template v-if="urlType == 1">
                             <div class="row">
                                 <div class="left"><span>委托授权书:</span></div>
                                 <div class="middle">
@@ -179,7 +180,7 @@
                                     </a>
                                 </div>
                             </div>
-                        </template>
+                            </template>
                     </div>
                 </div>
                 <div class="second section" v-if="!changeBank">
@@ -226,7 +227,8 @@
                         </div>
                     </div>
                 </div>
-                <template v-if="urlType == 1">
+                <!-- <template v-if="urlType == 1"> -->
+                <template>
                     <div class="second section" v-if="!changeBank">
                         <div class="title">
                             <p>管理员信息</p>
@@ -259,7 +261,7 @@
                             <div class="row">
                                 <div class="left"><span>验证码:</span></div>
                                 <div class="middle">
-                                    <input id="regcode" type="text" v-model="tradeInfos.regcode">
+                                    <input id="regcode" type="text" :disabled="codeDisabled" v-model="tradeInfos.regcode">
                                 </div>
                                 <div class="right"></div>
                             </div>
@@ -313,6 +315,20 @@
                             </div>
                             <div class="right"></div>
                         </div>
+                         <div class="row">
+                            <div class="left"><span>开户行所在地:</span></div>
+                            <div class="middle">
+                                <input id="bankAddress" type="text" v-model="tradeInfos.bankAddress">
+                            </div>
+                            <div class="right">
+                                <!-- <a href="javascript:;" class="upload">
+                                    <input id="bank-url" type="file" @change="uploadImg($event)" :data-src="tradeInfos.bankOpenAcctPermitFileUrl">上传扫描件
+                                </a>
+                                <span></span>
+                                <i class="fa fa-check-circle"></i> -->
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="left"><span>支行名称:</span></div>
                             <div class="middle">
@@ -352,19 +368,6 @@
                                 </a>
                                 <span></span>
                                 <i class="fa fa-check-circle"></i>
-                            </div>
-                        </div>
-                         <div class="row">
-                            <div class="left"><span>开户行所在地:</span></div>
-                            <div class="middle">
-                                <input id="bankAddress" type="text" v-model="tradeInfos.bankAddress">
-                            </div>
-                            <div class="right">
-                                <!-- <a href="javascript:;" class="upload">
-                                    <input id="bank-url" type="file" @change="uploadImg($event)" :data-src="tradeInfos.bankOpenAcctPermitFileUrl">上传扫描件
-                                </a>
-                                <span></span>
-                                <i class="fa fa-check-circle"></i> -->
                             </div>
                         </div>
                         <div class="row bank-url">
@@ -475,6 +478,7 @@ export default {
             transferBankList: [],
             showBranchBank: false,
             serveTel: config.info.serveTel,
+            codeDisabled:true,
             tradeInfos: {
                 orgNo: '',
                 telNo: '',
@@ -579,7 +583,6 @@ export default {
         },
         uploadImg(e) {
             let $this = this;
-
             let $dom = $(e.target);
             let file = $dom[0].files[0];
             let idName = $dom.context.id;
@@ -700,7 +703,7 @@ export default {
             let $acctName = document.getElementById('acctname');
             let $acctNo = document.getElementById('acctno');
             let $bankUrl = document.getElementById('bank-url');
-
+            let $bankAddress = document.getElementById('bankAddress');
             let $contactName = document.getElementById('contactname');
             let $taContactEml = document.getElementById('taContactEml');
             let $contactTel = document.getElementById('contacttel');
@@ -709,12 +712,12 @@ export default {
             let $contactNo = document.getElementById('contact-no');
             let $contactUrl = document.getElementById('contact-url');
             let $contactExpiredate = document.getElementById('contact-expiredate');
-
             let payload = {
                 acctType:'01',
                 issueId:4,
-                orgName: $name.value,
+                 orgName: $name.value,
                 telNo: $mobile.value,
+                organAddress:$organAddress.value,
                 idType: 1,
                 licenceNo: $licenceNo.value,
                 licenceFileUrl: $licenceUrl.dataset.src,
@@ -727,23 +730,28 @@ export default {
                 corpIdType: $corpidType.options[$corpidType.selectedIndex].value,
                 corpIdNo: $corpidNo.value,
                 corpIdFileUrl: $corpidUrl.dataset.src,
-                taPowerAttorneyFileUrl: $attorneyUrl.dataset.src,
                 corpIdExpireDate: $corpidExpiredate.value,
                 bankName: $bankName.options[$bankName.selectedIndex].text,
                 bankNo: $bankName.options[$bankName.selectedIndex].dataset.no,
                 bankType: $bankName.options[$bankName.selectedIndex].dataset.type,
                 branchBankName: $branchBank.value,
                 branchBankNo: $branchBankNo.value,
+                bankAddress:$bankAddress.value,
                 acctName: $acctName.value,
                 acctNo: $acctNo.value,
                 bankOpenAcctPermitFileUrl: $bankUrl.dataset.src,
                 taContactName:$contactName.value,
                 taContactTel:$contactTel.value,
                 regcode:$regcode.value,
+                taContactEml:$taContactEml.value,
                 taContactIdType:$contactType.value,
                 taContactIdNo:$contactNo.value,
                 taContactIdFileUrl:$contactUrl.dataset.src,
                 taContactExpireDate:$contactExpiredate.value,
+                investorName:$investorName.value,
+                taRegCerFileUrl :$taUrl.dataset.src,
+
+
             };
             if (!this.oneCode) {
                 payload.idType = 0;
@@ -753,11 +761,10 @@ export default {
                 payload.orgNoFileUrl = $orgnUrl.dataset.src;
             }
             if (this.urlType == 1) {
-                payload.acctType='01',
-                payload.investorName = $investorName.value;
-                payload.taRegCerFileUrl = $taUrl.dataset.src;
+                payload.acctType='1';
+               payload.taPowerAttorneyFileUrl=$attorneyUrl.dataset.src
             }else{
-                payload.acctType='03'
+                payload.acctType='0'
             }
             commonService.submitTradeInfo(this.urlType, payload, this);
         },
@@ -767,6 +774,7 @@ export default {
                 if (!stringTrim($mobileNo.value)) {
                     window.layer.tips('手机号码不能为空', $mobileNo);
                 } else {
+                    _self.codeDisabled=false,
                     commonService.hxSendSms($mobileNo.value, _self).then(() => {
                         _self.countDown(e.target);
                     });

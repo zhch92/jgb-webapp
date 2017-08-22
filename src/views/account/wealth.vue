@@ -111,6 +111,31 @@
                                                     <a class="sell btn" @click="openModal($event, 3, 1)" :data-id="product.productId" :data-issue="product.issueId" :data-name="product.prodName" :data-asset="product.totalAsset" :data-type="product.securityMarketType" :data-code="product.prodCode">赎回</a>
                                                 </div>
                                             </template>
+                                              <template v-else-if="product.issueId == 4">
+                                                    <div class="block">
+                                    <p>
+                                        <em class="intro">投资期限：</em>
+                                        <em>每日申赎</em>
+                                    </p>
+                                    <p>
+                                        <em class="intro">更新日期：</em>
+                                        <em>{{ product.uptTime | formatDate('yyyy.MM.dd') }}</em>
+                                    </p>
+                                    <p>
+                                        <span class="intro">
+                                        <em>爱</em>
+                                        <em>心</em>
+                                        <em>值</em>
+                                    </span>
+                                        <em class="intro">：</em>
+                                        <em>{{product.pointRate | tonIteger}}/亿元（日终存量）</em>
+                                    </p>
+                                </div>
+                                                <div class="block">
+                                                <a class="buy btn" @click="openModal($event,2, 0)" :data-id="product.productId" :data-issue="product.issueId" :data-name="product.prodName" :data-type="product.securityMarketType" :data-code="product.prodCode">申购</a>
+                                                    <a class="sell btn" @click="openModal($event, 3, 1)" :data-id="product.productId" :data-issue="product.issueId" :data-name="product.prodName" :data-asset="product.totalAsset" :data-type="product.securityMarketType" :data-code="product.prodCode">赎回</a>
+                                                </div>
+                                            </template>
                                             <template v-else>
                                                 <div class="block cx2">
                                                     <p>

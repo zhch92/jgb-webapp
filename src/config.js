@@ -45,7 +45,7 @@ const config = {
             register: basePath + 'organ/reg',
             forget: basePath + 'organ/pass',
             sms: basePath + 'sms',
-            hxSms: basePath + 'Sms/hx',
+            hxSms: basePath + 'sms/hx',
             account: basePath + 'organ/tradeInfo',
             reser: basePath + 'products/reser',
             quickWithdraw: basePath + 'products/quickWithdraw',

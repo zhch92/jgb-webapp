@@ -603,9 +603,11 @@ export default {
             if (objData.product.issueId == 2||objData.product.issueId == 4) {
                 productService.getTaInfo(objData.product.issueId, _self).then((data) => {
                     _self.taInfo = data;
+                    if (data){
+                        let selected = data[0]?data[0].acctId:{};
+                        _self.selected = selected;
 
-                    let selected = data[0]?data[0].acctId:{};
-                    _self.selected = selected;
+                    }
                 })
             }
             if (objData.modalType == 5) {

@@ -69,6 +69,8 @@ class CommonService {
                 url = config.ajax._post.taOpenAcct;break;
             case 2:
                 url = config.ajax._post.openAcct;break;
+                case 3:
+                url = config.ajax._post.taOpenAcct;break;
         }
         _self.$http.post(url, payload).then((resp) => {
             data = resp.body;
