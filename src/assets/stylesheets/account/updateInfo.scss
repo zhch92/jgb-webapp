@@ -105,7 +105,7 @@
                         }
                         .middle {
                             position: relative;
-                            width: 242px;
+                            width: 300px;
                             margin: 0 5px;
                             input {
                                 width: 235px;
@@ -299,6 +299,7 @@
                         width: 100px;
                         padding: 5px 0;
                         font-size: 1.6rem;
+                        border-radius: 4px;
                         &.cancel {
                             color: $tipsColor;
                             background-color: $colorWhite;
@@ -308,6 +309,13 @@
                             margin-left: 15px;
                             color: $colorWhite;
                             background-color: $colorBlue;
+                        }
+                        &.question{
+                            width: 150px;
+                            color: $tipsColor;
+                            background-color: $colorWhite;
+                            border: 1px solid $borderColor;
+
                         }
                     }
                 }
@@ -326,6 +334,11 @@
     background-color: $colorWhite;
     box-shadow: 0 0 15px 0 rgba(0, 0, 0, .3);
     border-radius: 10px;
+    &.questionnaire{
+        margin: 0;
+        height: 90vh;
+overflow: auto;
+    }
     .title {
         position: relative;
         height: 50px;
@@ -358,7 +371,7 @@
         border-top: 4px solid $colorBlue;
     }
     .content {
-        width: 87%;
+        width: 89%;
         margin: 0 auto;
         .section {
             &.first {
@@ -410,6 +423,25 @@
                     }
                 }
             }
+        }
+        .issue{
+            label{
+                display: block;
+                line-height: 20px;
+            }
+            input[type='radio']{
+                -webkit-appearance:radio;
+                appearance:radio;
+                margin-right: 7px;
+
+            }
+            input[type='checkbox']{
+                -webkit-appearance:radio;
+                appearance:radio;
+                margin-right: 7px;
+
+            }
+
         }
     }
     .btns {

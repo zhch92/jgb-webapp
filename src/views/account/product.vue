@@ -7,8 +7,8 @@
                     <span>券商资管</span>
                 </div>
                 <div class="content">
-                    <template v-for="(item, index) in filterMarketType(2)" v-if="item.issueId===4">
-                        <div class="item" :class="{ cx_last: index == 1 }">
+                    <template v-for="(item, index) in filterHxProducts">
+                        <div class="item" :class="{ cx_last: index == 1 }" v-if="index<4">
                             <div class="top">
                                 <div class="name">
                                     <img src="../../assets/images/account/product/product.png" alt="">
@@ -55,8 +55,56 @@
                                 </div>
                             </div>
                         </div>
-                    </template>
+                        <div class="item" :class="{ cx_last: index == 1 }" v-if="index>3" v-show="more">
+                            <div class="top">
+                                <div class="name">
+                                    <img src="../../assets/images/account/product/product.png" alt="">
+                                    <a :href="item.linkUrl" target="_blank">{{ item.name }}</a>
+                                </div>
+                            </div>
+                            <div class="bottom regular">
+                                <div class="block">
+                                    <p class="intro">七日年化收益率</p>
+                                    <p class="number">{{ item.seventhYearYield | toPercent }}</p>
+                                </div>
+                                <div class="block">
+                                    <p class="intro">万份收益</p>
+                                    <p class="number">
+                                        {{ item.yieldPerMillion | keepDecimal }}
+                                        <span class="suffix">元</span>
+                                    </p>
+                                </div>
+                                <div class="block">
+                                    <p>
+                                        <em class="intro">投资期限：</em>
+                                        <em>每日申赎</em>
+                                    </p>
+                                    <p>
+                                        <em class="intro">更新日期：</em>
+                                        <em>{{ item.uptTime | formatDate('yyyy.MM.dd') }}</em>
+                                    </p>
+                                    <p>
+                                        <span class="intro">
+                                        <em>爱</em>
+                                        <em>心</em>
+                                        <em>值</em>
+                                    </span>
+                                        <em class="intro">：</em>
+                                        <em>{{item.pointRate | tonIteger}}/亿元（日终存量）</em>
+                                    </p>
+                                </div>
+                                <div class="block">
+                                    <template>
+                                        <a class="buy btn" @click="openModal($event, 2, 2, 0)" :data-id="item.id" :data-issue="item.issueId" :data-name="item.name" :data-code="item.prodCode" :data-forwardType='item.carryForwardType'>申购</a>
+                                        <a class="sell btn" @click="openModal($event, 3, 2, 1)" :data-id="item.id" :data-issue="item.issueId" :data-name="item.name" :data-code="item.prodCode">赎回</a>
+                                        <router-link :to="{ name: 'hxAccount' }" class="gf-kh btn">开户</router-link>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
 
+                    </template>
+                    <a href="javascript:void(0)" class="more" @click="more=!more">{{more?'收起':'查询更多'}}</a>
                 </div>
             </div>
             <div class="first section">
@@ -67,7 +115,7 @@
                     </div>
                 </div>
                 <div class="content">
-                    <template v-for="item in filterMarketType(1)">
+                    <template v-for="(item,index) in filterMarketType(1)">
                         <div class="item">
                             <div class="top">
                                 <div class="name">
@@ -266,6 +314,7 @@ export default {
     },
     data() {
         return {
+            more:false,
             showTips: false,
             current: false,
             viewer: {
@@ -282,7 +331,15 @@ export default {
         },
         pointRate(val) {
             return val * 10000
-        }
+        },
+         filterHxProducts(){
+            let _self = this;
+            const hxProducts=_self.products.filter((product) => {
+                return product.issueId == 4
+            })
+            return  hxProducts
+
+        },
     },
     activated() {
         this.$store.dispatch('fetchProducts');
@@ -294,6 +351,7 @@ export default {
                 return product.securityMarketType == type
             })
         },
+       
         // viewImg(e) {
         //     const url = e.target.lastChild.src;
         //     const id = e.target.dataset.id;

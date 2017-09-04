@@ -20,8 +20,8 @@ const config = {
         userKey: 'UUID'
     },
     ajax: {
-        tradeInfo: basePath + 'organ/tradeInfo',
         _get: {
+        tradeInfo: basePath + 'organ/tradeInfo',
             products: basePath + 'products',
             wealth: basePath + 'wealth',
             totalAsset: basePath + 'wealth/totalAssert',

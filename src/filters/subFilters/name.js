@@ -32,6 +32,26 @@ const name = {
             }
         }
         return value;
+    },
+     /**
+     * 基金名称转换
+     * @param {string} value - 基金类型
+     * @returns {string}
+     */
+    fundsName (value) {
+        if (value==1) {
+                value = '长信';
+        }else if(value==2){
+                value = '广发';
+
+        }else if(value==3){
+                value = '定期';
+
+        }else if(value==4){
+                value = '华信';
+            
+        }
+        return value;
     }
 };
 

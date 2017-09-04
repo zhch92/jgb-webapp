@@ -375,6 +375,7 @@ export default {
                 branchBankList: [],
                 showBranchBank: false,
                 tradeInfos: {
+                    orgName:'',
                     orgNo: '',
                     telNo: '',
                     idType: '',
@@ -409,7 +410,7 @@ export default {
                 return this.$store.getters.getTradeInfo
             }
         },
-        activated() {
+        created() {
             this.$store.dispatch('fetchTradeInfo');
         },
         watch: {

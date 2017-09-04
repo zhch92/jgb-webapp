@@ -117,7 +117,7 @@ export const fetchIncomeList = ({ commit }, payload) => {
  */
 export const fetchTradeInfo = ({ commit }) => {
     let [data, errCode] = ['', ''];
-    Vue.http.get(config.ajax.tradeInfo).then((resp) => {
+    Vue.http.get(config.ajax._get.tradeInfo).then((resp) => {
         data = resp.body;
         errCode = data.errCode;
         if (!errCode) {
@@ -129,6 +129,25 @@ export const fetchTradeInfo = ({ commit }) => {
         logger.error('获取企业信息失败，错误码[' + resp.status + ']');
     });
 };
+/**
+ * 获取华信信息
+ * @param commit
+ */
+export const fetchHxTradeInfo = ({ commit }) => {
+    let [data, errCode] = ['', ''];
+    Vue.http.get(config.ajax._get.tradeInfo).then((resp) => {
+        data = resp.body;
+        errCode = data.errCode;
+        if (!errCode) {
+            commit(types.GET_HXTRADEINFO_SUCCESS, data.data);
+        } else {
+            errorHandler(errCode);
+        }
+    }, (resp) => {
+        logger.error('获取企业信息失败，错误码[' + resp.status + ']');
+    });
+};
+
 
 /**
  * 获取优选基金

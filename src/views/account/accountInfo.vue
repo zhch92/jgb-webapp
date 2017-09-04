@@ -11,13 +11,13 @@
                 <template v-for="item in accountInfo.resultList">
                     <div class="record">
                         <p>
-                            <span class="icon" :class="item.issueId == 1 ? 'cx' : 'gf'" v-text="item.issueId == 1 ? '长信' : '广发'"></span>
+                            <span class="icon" :class="iconType(item.issueId)">{{item.issueId | fundsName}}</span>
                         </p>
                         <p>
                             <span>{{ item.investorName | formatInvestorName(31) || '--' }}</span>
                         </p>
                         <p>
-                            <span v-text="item.issueId == 1 ? item.taAccountId || '--' : '--'"></span>
+                            <span v-text="item.issueId == 1||item.issueId == 4 ? item.taAccountId || '--' : '--'"></span>
                         </p>
                         <p>
                             <span v-if="item.status == 0"><em v-text="item.issueId == 1 ? '确权': '开户'"></em>进行中，请等候...</span>
@@ -71,6 +71,17 @@
             eventHub.$off('loadList', this.loadList);
         },
         methods: {
+            iconType(issueId){
+                        let cls='';
+                        if(issueId==1){
+                            cls='cx';
+                        }else if(issueId==2){
+                            cls='gf';
+                        }else if(issueId==4){
+                            cls='hx';
+                        }
+                        return cls
+            },
             loadList (pageNo) {
                 let _self = this;
                 _self.$store.dispatch('fetchAccountInfo', pageNo).then(() => {
@@ -89,9 +100,17 @@
             .icon {
                 &.gf {
                     background: url("../../assets/images/account/system/bg_orange.png") no-repeat;
+                    color: orange;
                 }
                 &.cx {
                      background: url("../../assets/images/account/system/bg_blue.png") no-repeat;
+                     color:blue;
+                 }
+
+                &.hx {
+                     background: url("../../assets/images/account/system/hx.png") no-repeat;
+                     color:#ffa500;
+                     
                  }
             }
         }

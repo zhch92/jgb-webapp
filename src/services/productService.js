@@ -61,7 +61,7 @@ class ProductService {
     getTotalAsset(productId, vue) {
         return new Promise((resolve, reject) => {
             let [data, errCode, _self] = ['', '', vue];
-            _self.$http.get(config.ajax._get.totalAsset + '?productId=' + productId).then((resp) => {
+            _self.$http.get(config.ajax._get.totalAsset).then((resp) => {
                 data = resp.body;
                 errCode = data.errCode;
                 if (!errCode) {
@@ -77,7 +77,7 @@ class ProductService {
     getRemain(prodCode, vue) {
         return new Promise((resolve, reject) => {
             let [data, errCode, _self] = ['', '', vue];
-            _self.$http.get(config.ajax._get.remain + '?prodCode=' + prodCode).then((resp) => {
+            _self.$http.get(config.ajax._get.taAcctDetail + '?prodCode=' + prodCode).then((resp) => {
                 data = resp.body;
                 errCode = data.errCode;
                 if (!errCode) {

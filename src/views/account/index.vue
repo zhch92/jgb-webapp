@@ -368,7 +368,7 @@ export default {
                 return '0.00';
             }
         },
-                formatRemain() {
+        formatRemain() {
             let value = this.product.remain;
             if (!isNaN(value) && value != null) {
                 let num = parseFloat(value).toFixed(2);
@@ -463,8 +463,7 @@ export default {
             } else {
                 money = Number(money.replace(/,/g, ''));
                 (modalType == 0 || modalType == 2) ? money = money: null;
-                console.log([dataObj.id,money,dataObj.issueId,dataObj.txnType,$acctId.val(),modalType])
-                (reserType == 0) ? productService.reser(dataObj.id, money, dataObj.issueId, dataObj.txnType, $acctId.val(), modalType, this): productService.quickWithdraw(dataObj.id, money, $acctId.val(), this);
+                (reserType == 0) ? productService.reser(dataObj.id, money, dataObj.issueId, dataObj.txnType, $acctId.val(), modalType, this):productService.quickWithdraw(dataObj.id, money, $acctId.val(), this);
                 this.closeModal(modalType);
             }
         },
@@ -597,16 +596,30 @@ export default {
             }
             if (objData.getAsset&&objData.product.issueId==4) {
                 productService.getRemain(objData.product.prodCode, _self).then((data) => {
-                    objData.product.remain = data.remainAmount;
+                    objData.product.remain = data.totalAsset;
                 })
             }
             if (objData.product.issueId == 2||objData.product.issueId == 4) {
                 productService.getTaInfo(objData.product.issueId, _self).then((data) => {
                     _self.taInfo = data;
-                    if (data){
-                        let selected = data[0]?data[0].acctId:{};
+                    if (data&&data.length>0){
+                        let selected = data[0].acctId;
                         _self.selected = selected;
+                     switch (objData.modalType) {
+               
+                            case 2:
+                                _self.showBuy = true;
+                                break;
+                            case 3:
+                                _self.showSell = true;
+                                break;
+              
+                                    }
 
+
+                    }else{
+                         window.layer.msg('您暂未开户，请先开户再进行交易', { time: 2000 });
+                        return false
                     }
                 })
             }
@@ -629,12 +642,12 @@ export default {
                 case 1:
                     _self.showOrderSell = true;
                     break;
-                case 2:
-                    _self.showBuy = true;
-                    break;
-                case 3:
-                    _self.showSell = true;
-                    break;
+                // case 2:
+                //     _self.showBuy = true;
+                //     break;
+                // case 3:
+                //     _self.showSell = true;
+                //     break;
                 case 4:
                     _self.authErrMsg = '';
                     _self.showAuth = true;
