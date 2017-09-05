@@ -375,6 +375,7 @@
                             <span>
                                 <em>* 基本户，提供《开户许可证》</em>
                                 <em>* 一般户，提供《开户单位银行结算账户申请书》</em>
+                                <em>*根据相关法律法规要求，在您提交前，请务必完成风险评估测试（点击”风险评估测试”按钮）</em>
                             </span>
                         </div>
                     </div>
@@ -448,7 +449,7 @@
                 </div>
             </div>
         </c-modal>
-        <c-modal v-if="showKhQuestions">
+        <c-modal v-show="showKhQuestions">
             <div class="kh-tips questionnaire modal-container" slot="modal-container">
                 <div class="title">
                     <span>问卷调查</span>
@@ -842,7 +843,7 @@ export default {
         },
         getTransferBank() {
             let _self = this;
-            bankService.getTransferBank(_self).then((data) => {
+            bankService.getTransferBank(_self,4).then((data) => {
                 _self.transferBankList = data;
             })
         },
@@ -953,7 +954,7 @@ export default {
                 payload.acctType='0'
             }
             if(this.riskLevel=='') {
-                window.layer.msg('您还未完成 用户风险等级问卷调查')
+                window.layer.msg('根据相关法律法规要求，请您先完成风险评估测试，再提交开户申请，谢谢！')
                 return false
             }
             commonService.submitTradeInfo(this.urlType, payload, this);
@@ -990,7 +991,7 @@ export default {
                 for (let i = 1; i < 20; i++) {
                  let $issue_i = $("input[name='issue-"+i+"']:checked");
                 if($issue_i.val()===undefined){
-                    layer.msg('您的题还未做完，不能提交');
+                    layer.msg('您存在遗漏问题未回答，请您完成，谢谢！');
                     return false
                      }else{
                         if(i==12||i==16){
@@ -1027,7 +1028,7 @@ export default {
                console.log('激进型')
 
                }
-              layer.msg('用户风险等级问卷调查 提价成功');
+              layer.msg('用户风险等级问卷调查 提交成功');
               setTimeout(function(){
               _self.showKhQuestions=false;
           },2500)

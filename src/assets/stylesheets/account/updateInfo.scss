@@ -143,6 +143,7 @@
                                 }
                             }
                             ul {
+                                left: 29px;
                                 &#branch-banklist {
                                     position: absolute;
                                     width: 235px;
@@ -312,9 +313,9 @@
                         }
                         &.question{
                             width: 150px;
-                            color: $tipsColor;
+                            color: $colorBlue;
                             background-color: $colorWhite;
-                            border: 1px solid $borderColor;
+                            border: 1px solid $colorBlue;
 
                         }
                     }
