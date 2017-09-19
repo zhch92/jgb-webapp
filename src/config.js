@@ -26,6 +26,7 @@ const config = {
             wealth: basePath + 'wealth',
             totalAsset: basePath + 'wealth/totalAssert',
             taAcctDetail: basePath + 'wealth/taAcctDetail',
+            remain:basePath+"products/remain",
             points: basePath + 'points',
             point: basePath + 'points/point',
             recommend: basePath + 'products/rec',
@@ -36,7 +37,8 @@ const config = {
             branchBank: basePath + 'organ/getPayBranchBank',
             taInfo: basePath + 'organ/taInfo',
             allTaAcct: basePath + 'organ/allTaAcct',
-            remain:basePath+'products/remain'
+            remain:basePath+'products/remain',
+            city:basePath+'city'
 
         },
         _post: {
@@ -56,7 +58,11 @@ const config = {
             modifyBankInfo: basePath + 'organ/modifyBankInfo',
             lofConfirmAcct: basePath + 'organ/lofConfirmAcct',
             etfConfirmAcct: basePath + 'organ/etfConfirmAcct',
-            taSubscribe: basePath + 'organ/taSubscribe'
+            taSubscribe: basePath + 'organ/taSubscribe',
+            totalAsset: basePath + 'wealth/totalAssert',
+            city:basePath+'city'
+            
+
         }
     }
 };

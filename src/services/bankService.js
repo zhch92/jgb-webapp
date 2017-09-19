@@ -2,7 +2,7 @@ import config from '../config'
 import { errorHandler, logger } from '../plugins/utils'
 
 class BankService {
-    getTransferBank (vue,issueId) {
+    getTransferBank (vue,issueId='') {
         return new Promise((resolve, reject) => {
             let [data, errCode, _self] = ['', '', vue];
             _self.$http.get(config.ajax._get.transferBank+ '?issueId='+issueId ).then((resp) => {

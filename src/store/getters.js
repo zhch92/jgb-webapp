@@ -10,3 +10,4 @@ export const getWealth = state => state.wealth;
 export const getProducts = state => state.products;
 export const getAccountInfo = state => state.accountInfo;
 export const getUserState = state => state.userLogged;
+export const getCity = state => state.city;

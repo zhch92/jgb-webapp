@@ -2,9 +2,15 @@
     <div id="wealth">
         <div class="base">
             <div class="info">
-                <span>欢迎您，<em>{{ userInfo.organName }}</em></span>
-                <span>上次登录IP：<em>{{ userInfo.lastLoginIp }}</em></span>
-                <span>上次登录时间：<em>{{ userInfo.lastLoginTime | formatDate('yyyy年MM月dd日') }}</em></span>
+                <span>欢迎您，
+                    <em>{{ userInfo.organName }}</em>
+                </span>
+                <span>上次登录IP：
+                    <em>{{ userInfo.lastLoginIp }}</em>
+                </span>
+                <span>上次登录时间：
+                    <em>{{ userInfo.lastLoginTime | formatDate('yyyy年MM月dd日') }}</em>
+                </span>
             </div>
             <c-exp ref="exp" :id="'wealthChart'"></c-exp>
             <div class="first section">
@@ -28,7 +34,9 @@
             </div>
             <div class="third section">
                 <div class="title">
-                    <span>持有资产<em>(*机构宝平台所显示的持有资产为经基金公司确认的资产，在途资产可以登录基金公司官网查看。)</em></span>
+                    <span>持有资产
+                        <em>(*机构宝平台所显示的持有资产为经基金公司确认的资产，在途资产可以登录基金公司官网查看。)</em>
+                    </span>
                 </div>
                 <div class="content" v-if="wealth.orgNo!=''">
                     <template v-for="organItem in wealth.orgTaAcctlist">
@@ -53,26 +61,36 @@
                                         <div class="bottom">
                                             <div class="block">
                                                 <p class="intro">{{product.issueId==3?'金额(元)':'持有资产（元）'}}</p>
-                                                <p class="number"><b>{{ product.totalAsset | formatMoney }}</b></p>
+                                                <p class="number">
+                                                    <b>{{ product.totalAsset | formatMoney }}</b>
+                                                </p>
                                             </div>
                                             <template v-if="product.issueId==3">
                                                 <div class="block">
                                                     <p class="intro">预期报价收益率</p>
-                                                    <p class="number"><b>{{ product.seventhYearYield | toPercent }}</b></p>
+                                                    <p class="number">
+                                                        <b>{{ product.seventhYearYield | toPercent }}</b>
+                                                    </p>
                                                 </div>
                                                 <div class="block">
                                                     <p class="intro">期限(天)</p>
-                                                    <p class="number"><b>{{ product.valueDuration }}</b></p>
+                                                    <p class="number">
+                                                        <b>{{ product.valueDuration }}</b>
+                                                    </p>
                                                 </div>
                                             </template>
                                             <template v-else>
                                                 <div class="block">
                                                     <p class="intro">昨日收益</p>
-                                                    <p class="number"><b>{{ product.nowdayIncome | formatMoney }}</b></p>
+                                                    <p class="number">
+                                                        <b>{{ product.nowdayIncome | formatMoney }}</b>
+                                                    </p>
                                                 </div>
                                                 <div class="block">
                                                     <p class="intro">累计收益</p>
-                                                    <p class="number"><b>{{ product.totalIncome | formatMoney }}</b></p>
+                                                    <p class="number">
+                                                        <b>{{ product.totalIncome | formatMoney }}</b>
+                                                    </p>
                                                 </div>
                                             </template>
                                             <template v-if="product.issueId == 1">
@@ -111,28 +129,28 @@
                                                     <a class="sell btn" @click="openModal($event, 3, 1)" :data-id="product.productId" :data-issue="product.issueId" :data-name="product.prodName" :data-asset="product.totalAsset" :data-type="product.securityMarketType" :data-code="product.prodCode">赎回</a>
                                                 </div>
                                             </template>
-                                              <template v-else-if="product.issueId == 4">
-                                                    <div class="block">
-                                    <p>
-                                        <em class="intro">投资期限：</em>
-                                        <em>每日申赎</em>
-                                    </p>
-                                    <p>
-                                        <em class="intro">更新日期：</em>
-                                        <em>{{ product.uptTime | formatDate('yyyy.MM.dd') }}</em>
-                                    </p>
-                                    <p>
-                                        <span class="intro">
-                                        <em>爱</em>
-                                        <em>心</em>
-                                        <em>值</em>
-                                    </span>
-                                        <em class="intro">：</em>
-                                        <em>{{product.pointRate | tonIteger}}/亿元（日终存量）</em>
-                                    </p>
-                                </div>
+                                            <template v-else-if="product.issueId == 4">
                                                 <div class="block">
-                                                <a class="buy btn" @click="openModal($event,2, 0)" :data-id="product.productId" :data-issue="product.issueId" :data-name="product.prodName" :data-type="product.securityMarketType" :data-code="product.prodCode">申购</a>
+                                                    <p>
+                                                        <em class="intro">投资期限：</em>
+                                                        <em>每日申赎</em>
+                                                    </p>
+                                                    <p>
+                                                        <em class="intro">更新日期：</em>
+                                                        <em>{{ product.uptTime | formatDate('yyyy.MM.dd') }}</em>
+                                                    </p>
+                                                    <p>
+                                                        <span class="intro">
+                                                            <em>爱</em>
+                                                            <em>心</em>
+                                                            <em>值</em>
+                                                        </span>
+                                                        <em class="intro">：</em>
+                                                        <em>{{product.pointRate | tonIteger}}/亿元（日终存量）</em>
+                                                    </p>
+                                                </div>
+                                                <div class="block">
+                                                    <a class="buy btn" @click="openModal($event,2, 0)" :data-id="product.productId" :data-issue="product.issueId" :data-name="product.prodName" :data-type="product.securityMarketType" :data-code="product.prodCode">申购</a>
                                                     <a class="sell btn" @click="openModal($event, 3, 1)" :data-id="product.productId" :data-issue="product.issueId" :data-name="product.prodName" :data-asset="product.totalAsset" :data-type="product.securityMarketType" :data-code="product.prodCode">赎回</a>
                                                 </div>
                                             </template>
@@ -208,7 +226,7 @@ export default {
     methods: {
         toggleList(e) {
             let $dom, $em, $i, $products;
-            (e.target.tagName == 'a') ? $dom = $(e.target): $dom = $(e.target).parent();
+            (e.target.tagName == 'a') ? $dom = $(e.target) : $dom = $(e.target).parent();
             $em = $dom.find('em');
             $i = $dom.find('i');
             $products = $dom.parents('.organ').find('.products');
@@ -236,6 +254,9 @@ export default {
                 getAsset: false,
                 modalType: modalType
             };
+            if (modalType == 1 || modalType == 3) {
+                objData.getAsset = true;
+            }
             eventHub.$emit('showModal', objData);
         }
     }

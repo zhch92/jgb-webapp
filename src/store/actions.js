@@ -18,7 +18,7 @@ export const fetchPoint = ({ commit }) => {
             errCode = data.errCode;
             if (!errCode) {
                 if (data.data) {
-                    commit(types.GET_POINT_SUCCESS, data.data);
+                    commit('GET_POINT_SUCCESS', data.data);
                     resolve();
                 }
             } else {
@@ -45,7 +45,7 @@ export const fetchPointsRecord = ({ commit }, pageNo) => {
             data = resp.body;
             errCode = data.errCode;
             if (!errCode) {
-                commit(types.GET_POINTSRECORD_SUCCESS, data.data);
+                commit('GET_POINTSRECORD_SUCCESS', data.data);
                 resolve();
             } else {
                 errorHandler(errCode);
@@ -71,7 +71,7 @@ export const fetchTradeList = ({ commit }, payload) => {
             data = resp.body;
             errCode = data.errCode;
             if (!errCode) {
-                commit(types.GET_TRADELIST_SUCCESS, data.data);
+                commit('GET_TRADELIST_SUCCESS', data.data);
                 resolve();
             } else {
                 errorHandler(errCode);
@@ -98,7 +98,7 @@ export const fetchIncomeList = ({ commit }, payload) => {
             data = resp.body;
             errCode = data.errCode;
             if (!errCode) {
-                commit(types.GET_INCOME_SUCCESS, data.data);
+                commit('GET_INCOME_SUCCESS', data.data);
                 resolve();
             } else {
                 errorHandler(errCode);
@@ -121,7 +121,7 @@ export const fetchTradeInfo = ({ commit }) => {
         data = resp.body;
         errCode = data.errCode;
         if (!errCode) {
-            commit(types.GET_TRADEINFO_SUCCESS, data.data);
+            commit('GET_TRADEINFO_SUCCESS', data.data);
         } else {
             errorHandler(errCode);
         }
@@ -133,21 +133,25 @@ export const fetchTradeInfo = ({ commit }) => {
  * 获取华信信息
  * @param commit
  */
-export const fetchHxTradeInfo = ({ commit }) => {
-    let [data, errCode] = ['', ''];
-    Vue.http.get(config.ajax._get.tradeInfo).then((resp) => {
-        data = resp.body;
-        errCode = data.errCode;
-        if (!errCode) {
-            commit(types.GET_HXTRADEINFO_SUCCESS, data.data);
-        } else {
-            errorHandler(errCode);
-        }
-    }, (resp) => {
-        logger.error('获取企业信息失败，错误码[' + resp.status + ']');
-    });
-};
 
+
+export const fetchHxTradeInfo = ({ commit }, pageNo) => {
+    return new Promise((resolve, reject) => {
+        let [data, errCode] = ['', ''];
+        Vue.http.get(config.ajax._get.tradeInfo).then((resp) => {
+            data = resp.body;
+            errCode = data.errCode;
+            if (!errCode) {
+                resolve(data);
+                commit('GET_HXTRADEINFO_SUCCESS', data.data);
+            } else {
+                errorHandler(errCode);
+            }
+        }, (resp) => {
+            logger.error('获取企业信息失败，错误码[' + resp.status + ']');
+        })
+    })
+};
 
 /**
  * 获取优选基金
@@ -159,7 +163,7 @@ export const fetchRecommend = ({ commit }) => {
         data = resp.body;
         errCode = data.errCode;
         if (!errCode) {
-            commit(types.GET_RECOMMEND_SUCCESS, data.data);
+            commit('GET_RECOMMEND_SUCCESS', data.data);
         } else {
             errorHandler(errCode);
         }
@@ -179,7 +183,7 @@ export const fetchWealth = ({ commit }) => {
         errCode = data.errCode;
         if (!errCode) {
             if (data.data) {
-                commit(types.GET_WEALTH_SUCCESS, data.data);
+                commit('GET_WEALTH_SUCCESS', data.data);
             }
         } else {
             errorHandler(errCode);
@@ -199,7 +203,7 @@ export const fetchProducts = ({ commit }) => {
         data = resp.body;
         errCode = data.errCode;
         if (!errCode) {
-            commit(types.GET_PRODUCTS_SUCCESS, data.data);
+            commit('GET_PRODUCTS_SUCCESS', data.data);
         } else {
             errorHandler(errCode);
         }
@@ -222,7 +226,7 @@ export const fetchAccountInfo = ({ commit }, pageNo) => {
             data = resp.body;
             errCode = data.errCode;
             if (!errCode) {
-                commit(types.GET_ACCOUNTINFO_SUCCESS, data.data);
+                commit('GET_ACCOUNTINFO_SUCCESS', data.data);
                 resolve();
             } else {
                 errorHandler(errCode);
@@ -246,9 +250,14 @@ export const userLogin = ({ commit }, payload) => {
             commit(types.USER_LOGIN_SUCCESS)
         })
     } else {
-        commit(types.USER_LOGIN_SUCCESS)
+        console.log('12312321')
+            commit(types.USER_LOGIN_SUCCESS)
     }
 };
+
+
+
+
 
 /**
  * 用户退出
@@ -256,6 +265,46 @@ export const userLogin = ({ commit }, payload) => {
  */
 export const userLogout = ({ commit }) => {
     userService.logout().then(() => {
-        commit(types.USER_LOGOUT_SUCCESS)
+        commit('USER_LOGOUT_SUCCESS')
     })
 };
+/**
+ * 华信开户获取城市信息
+ * @param commit
+ * @param pageNo
+ * @returns {Promise}
+ */
+export const fetchCity = ({ commit }) => {
+    return new Promise((resolve, reject) => {
+        let [data, errCode] = ['', ''];
+        Vue.http.get(config.ajax._get.city).then((resp) => {
+            data = resp.body;
+            errCode = data.errCode;
+            if (!errCode) {
+                commit('GET_CITY_SUCCESS', data.data);
+                resolve();
+            } else {
+                errorHandler(errCode);
+                reject();
+            }
+        }, (resp) => {
+            logger.error('获取省份失败，错误码[' + resp.status + ']');
+        })
+    })
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

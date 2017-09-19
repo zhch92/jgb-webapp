@@ -295,6 +295,10 @@
                 }
             }
             .fourth.section {
+                .hint{
+                    text-align: center;
+                    color: red;
+                }
                 .content {
                     .btn {
                         width: 100px;
@@ -338,7 +342,7 @@
     &.questionnaire{
         margin: 0;
         height: 90vh;
-overflow: auto;
+        overflow: auto;
     }
     .title {
         position: relative;
@@ -426,9 +430,13 @@ overflow: auto;
             }
         }
         .issue{
+            .headline{
+                font-size: 16px;
+            }
             label{
                 display: block;
                 line-height: 20px;
+                font-size: 14px;
             }
             input[type='radio']{
                 -webkit-appearance:radio;
@@ -437,8 +445,8 @@ overflow: auto;
 
             }
             input[type='checkbox']{
-                -webkit-appearance:radio;
-                appearance:radio;
+                -webkit-appearance:checkbox;
+                appearance:checkbox;
                 margin-right: 7px;
 
             }

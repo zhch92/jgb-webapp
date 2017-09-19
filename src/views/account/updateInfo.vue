@@ -668,6 +668,7 @@ export default {
                 orgName: $name.value,
                 telNo: $mobile.value,
                 idType: 1,
+                issueId:2,
                 licenceNo: $licenceNo.value,
                 licenceFileUrl: $licenceUrl.dataset.src,
                 licenceExpireDate: $licenceExpiredate.value,

@@ -104,7 +104,7 @@
                         </div>
 
                     </template>
-                    <a href="javascript:void(0)" class="more" @click="more=!more">{{more?'收起':'查询更多'}}</a>
+                    <a href="javascript:void(0)" class="more" @click="more=!more" v-if="filterHxProducts.length>4">{{more?'收起':'查询更多'}}</a>
                 </div>
             </div>
             <div class="first section">
@@ -115,7 +115,7 @@
                     </div>
                 </div>
                 <div class="content">
-                    <template v-for="(item,index) in filterMarketType(1)">
+                    <template v-for="(item,index) in filterMarketType(1)"  v-if="item.issueId!=4">
                         <div class="item">
                             <div class="top">
                                 <div class="name">
@@ -224,7 +224,7 @@
         <template v-if='current'>
             <div class="second section">
                 <div class="content">
-                    <template v-for="(item, index) in filterMarketType(null)">
+                    <template v-for="(item, index) in filterDqProducts">
                         <div class="item" :class='{end:item.endFlag===true}'>
                             <div class="top">
                                 <div class="name">
@@ -340,6 +340,14 @@ export default {
             return  hxProducts
 
         },
+         filterDqProducts(){
+            let _self = this;
+            const dQProducts=_self.products.filter((product) => {
+                return product.issueId == 3
+            })
+            return  dQProducts
+
+        }
     },
     activated() {
         this.$store.dispatch('fetchProducts');

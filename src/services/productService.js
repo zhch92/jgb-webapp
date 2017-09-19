@@ -74,10 +74,10 @@ class ProductService {
             })
         })
     }
-    getRemain(prodCode, vue) {
+    getRemain(taAcctId,productId, vue) {
         return new Promise((resolve, reject) => {
             let [data, errCode, _self] = ['', '', vue];
-            _self.$http.get(config.ajax._get.taAcctDetail + '?prodCode=' + prodCode).then((resp) => {
+            _self.$http.post(config.ajax._post.totalAsset,{taAcctId:taAcctId,productId:productId},{emulateJSON: true}).then((resp) => {
                 data = resp.body;
                 errCode = data.errCode;
                 if (!errCode) {

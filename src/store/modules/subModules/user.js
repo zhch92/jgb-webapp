@@ -1,19 +1,29 @@
 import * as types from '../../mutation-types'
-import { getUserState } from '../../getters'
-import { userLogin, userLogout } from '../../actions'
+import { getUserState ,getCity} from '../../getters'
+import { userLogin, userLogout,fetchCity } from '../../actions'
 
 const state = {
-    userLogged: false
+    userLogged: false,
+    city:[{
+        "provCode": "",
+        "provName": "请选择",
+        "areaName": "",
+        "provPinyinSi": "",
+        "provPinyin": ""
+    }]
 };
 
 const getters = {
-    getUserState
+    getUserState,
+    getCity
 };
 
 const actions = {
     userLogin,
-    userLogout
+    userLogout,
+    fetchCity
 };
+
 
 const mutations = {
     [types.USER_LOGIN_SUCCESS] (state) {
@@ -21,6 +31,15 @@ const mutations = {
     },
     [types.USER_LOGOUT_SUCCESS] (state) {
         state.userLogged = false
+    },
+    [types.GET_CITY_SUCCESS] (state, agentInfo) {
+        state.city = [{
+            "provCode": "",
+            "provName": "请选择",
+            "areaName": "",
+            "provPinyinSi": "",
+            "provPinyin": ""
+        },...agentInfo]
     }
 };
 

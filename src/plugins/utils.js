@@ -183,6 +183,13 @@ export const errorHandler = (errCode) => {
             window.layer.msg('中国基金协会备案凭证不能为空', { time: 1300 });break;
          case 'J0024':
             window.layer.msg('经办人信息不能为空 ', { time: 1300 });break;
+        case 'J0025':
+            window.layer.msg('调用华信查询产品额度失败 ', { time: 1300 });break;
+         case 'J0026':
+            window.layer.msg('无效的手机号码 ', { time: 1300 });break;
+            case 'J0027':
+            window.layer.msg('请输入四个汉字的产品简称 ', { time: 1300 });break;
+
         default:
             window.layer.msg('未知错误，返回首页', {
                 time: 1300,
