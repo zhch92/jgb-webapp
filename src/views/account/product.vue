@@ -406,7 +406,7 @@ export default {
                     carryForwardType:$dom.data('forwardtype'),
                     txnType: txnType,
                     totalAsset: 0,
-                    remain:0,
+                    remainAmount:0,
                     marketType: marketType
                 },
                 getAsset: false,

@@ -3,7 +3,7 @@
         <div id="update-info">
             <div class="top">
                 <div class="left">
-                    <span>华信资管开户</span>
+                    <span>华信现金宝开户</span>
                 </div>
                 <div class="right">
                     <a class="btn" :class="{ active: urlType == 1 }" @click="urlType = 1">
@@ -519,7 +519,7 @@
                             <div class="row">
                                 <em></em>
                                 <span>加盖公章及法人印鉴的《业务授权委托书》
-                                    <a href="http://www.51jigoubao.com/jgb-download/gfPowerAttorney.zip">下载模板</a>
+                                    <a href="http://www.51jigoubao.com/jgb-download/%E5%8D%8E%E4%BF%A1%E5%BC%80%E6%88%B7%E6%8E%88%E6%9D%83%E4%B9%A6.doc">下载模板</a>
                                 </span>
                             </div>
                             <div class="row">

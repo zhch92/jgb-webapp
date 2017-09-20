@@ -90,6 +90,23 @@ class ProductService {
             })
         })
     }
+    /* 得到华信最大申购额度 */
+    getMaxRemain(prodCode, vue) {
+        return new Promise((resolve, reject) => {
+            let [data, errCode, _self] = ['', '', vue];
+            _self.$http.get(config.ajax._get.remain+'?prodCode='+prodCode).then((resp) => {
+                data = resp.body;
+                errCode = data.errCode;
+                if (!errCode) {
+                    resolve(data.data);
+                } else {
+                    errorHandler(errCode);
+                }
+            }, (resp) => {
+                logger.error('获取持有资产失败，错误码[' + resp.status + ']');
+            })
+        })
+    }
     getTaInfo(issueId, vue) {
         return new Promise((resolve, reject) => {
             let [data, errCode, _self] = ['', '', vue];
