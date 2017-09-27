@@ -66,7 +66,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <span class="tips">注：使用产品开户时，需填写基金管理人公司代码</span>
+                                <span class="tips">注：使用产品开户时，需填写产品管理人公司的统一社会信用代码</span>
                             </div>
                             <div class="row">
                                 <div class="left"><span>有效期至:</span></div>
@@ -96,7 +96,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <span class="tips">注：使用产品开户时，需填写基金管理人公司代码</span>
+                                <span class="tips">注：使用产品开户时，需填写产品管理人公司的统一社会信用代码</span>
                             </div>
                             <div class="row">
                                 <div class="left"><span>有效期至:</span></div>

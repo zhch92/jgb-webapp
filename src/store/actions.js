@@ -250,7 +250,6 @@ export const userLogin = ({ commit }, payload) => {
             commit(types.USER_LOGIN_SUCCESS)
         })
     } else {
-        console.log('12312321')
             commit(types.USER_LOGIN_SUCCESS)
     }
 };

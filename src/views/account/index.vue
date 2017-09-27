@@ -412,6 +412,19 @@ export default {
         eventHub.$off('showModal');
     },
     methods: {
+        testLay(account, product, type, number,unit, fn) {
+            layer.confirm('<div style="color:#666666"><p>交易账户：' + account + '</p><p>交易产品：' + product + '</p><p>交易类型：' + type + '</p><p>交易金额：' + number +  unit +'</p></div>',
+                {
+                    title: '交易提示',
+                    time: 0,
+                    move: false,
+                    area: ['440px', '300px'],
+                },
+                function(index) {
+                    fn();
+                    layer.close(index);
+                });
+        },
         thousand(num) {
             var arr = num.split(",");
             var str = arr.join('');
@@ -454,6 +467,7 @@ export default {
             $dom.focus();
         },
         reser(e, modalType, reserType) {
+            const _self = this;
             let $content = $(e.target).parents('.btns').siblings('.content');
             let $prodcut = $content.find('.select');
             let $input = $content.find('input');
@@ -484,10 +498,20 @@ export default {
                 // 临时禁止广发货币快赎
                 window.layer.msg('该产品暂未开放该功能');
             } else {
-                money = Number(money.replace(/,/g, ''));
-                (modalType == 0 || modalType == 2) ? money = money : null;
-                (reserType == 0) ? productService.reser(dataObj.id, money, dataObj.issueId, dataObj.txnType, $acctId.val(), modalType, this) : productService.quickWithdraw(dataObj.id, money, $acctId.val(), this);
-                this.closeModal(modalType);
+                let tradeType=modalType==2?'产品申购':'产品赎回';
+                let unit=modalType==2?' 元':' 份';
+                this.testLay(this.taInfo[0].name, this.product.name, tradeType, money,unit, function() {
+                    money = Number(money.replace(/,/g, ''));
+                    (modalType == 0 || modalType == 2) ? money = money : null;
+                    (reserType == 0) ? productService.reser(dataObj.id, money, dataObj.issueId, dataObj.txnType, $acctId.val(), modalType, _self) : productService.quickWithdraw(dataObj.id, money, $acctId.val(), _self);
+                    _self.closeModal(modalType);
+
+                })
+
+                // money = Number(money.replace(/,/g, ''));
+                // (modalType == 0 || modalType == 2) ? money = money : null;
+                // (reserType == 0) ? productService.reser(dataObj.id, money, dataObj.issueId, dataObj.txnType, $acctId.val(), modalType, this) : productService.quickWithdraw(dataObj.id, money, $acctId.val(), this);
+                // this.closeModal(modalType);
             }
         },
         // reserAll(e, modalType) {
@@ -628,10 +652,7 @@ export default {
                                 objData.product.totalAsset = data;
                             })
                         }
-
-
                         switch (objData.modalType) {
-
                             case 2:
                                 _self.showBuy = true;
                                 break;

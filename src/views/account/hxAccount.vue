@@ -40,7 +40,7 @@
                                 <span></span>
                             </div>
                         </div>
-                         <div class="row" v-if="urlType==3">
+                        <div class="row" v-if="urlType==3">
                             <div class="left">
                                 <span>企业简称:</span>
                             </div>
@@ -100,7 +100,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <span class="tips">注：使用产品开户时，需填写基金管理人公司代码</span>
+                                <span class="tips">注：使用产品开户时，需填写产品管理人公司的统一社会信用代码</span>
                             </div>
                             <div class="row">
                                 <div class="left">
@@ -133,10 +133,9 @@
                                     <i class="fa fa-check-circle"></i>
                                 </div>
                             </div>
-                            <!-- <div class="row">
-                                            <span class="tips">注：使用产品开户时，需填写基金管理人公司代码</span>
-                                        </div>
-             -->
+                             <div class="row">
+                                <span class="tips">注：使用产品开户时，需填写产品管理人公司的统一社会信用代码</span>
+                            </div>
                             <div class="row">
                                 <div class="left">
                                     <span>有效期至:</span>
@@ -192,12 +191,12 @@
                                 </div>
                                 <div class="right"></div>
                             </div>
-                             <div class="row">
+                            <div class="row">
                                 <div class="left">
                                     <span>基金产品简称:</span>
                                 </div>
                                 <div class="middle">
-                                <input id="shortName" type="text" placeholder="请输入四个汉字的产品简称" maxlength="4" v-model="tradeInfos.shortName">
+                                    <input id="shortName" type="text" placeholder="请输入四个汉字的产品简称" maxlength="4" v-model="tradeInfos.shortName">
                                 </div>
                                 <div class="right"></div>
                             </div>
@@ -392,7 +391,7 @@
                             </div>
                             <div class="middle">
                                 <!-- <input  type="text" > -->
-                                <select  v-model="province" style="width: 115px">
+                                <select v-model="province" style="width: 115px">
                                     <option v-for="(province,index) in provinceList" :value="province.provCode" :key="index">{{province.provName}}</option>
                                 </select>
                                 <select id="bankAddress" v-model="tradeInfos.bankAddress" style="width: 115px">
@@ -401,10 +400,10 @@
                             </div>
                             <div class="right">
                                 <!-- <a href="javascript:;" class="upload">
-                                                <input id="bank-url" type="file" @change="uploadImg($event)" :data-src="tradeInfos.bankOpenAcctPermitFileUrl">上传扫描件
-                                            </a>
-                                            <span></span>
-                                            <i class="fa fa-check-circle"></i> -->
+                                                        <input id="bank-url" type="file" @change="uploadImg($event)" :data-src="tradeInfos.bankOpenAcctPermitFileUrl">上传扫描件
+                                                    </a>
+                                                    <span></span>
+                                                    <i class="fa fa-check-circle"></i> -->
                             </div>
                         </div>
 
@@ -773,7 +772,7 @@ export default {
                 orgNo: '',
                 telNo: '',
                 idType: '',
-                shortName:'',
+                shortName: '',
                 organAddress: '',
                 licenceNo: '',
                 licenceExpireDate: null,
@@ -805,17 +804,17 @@ export default {
                 taContactExpireDate: null,
             },
             province: '',
-            cityList: [ {
-            "cityCode": undefined,
-            "cityName": "请选择",
-            "provCode": "",
-            "cityAttr": "",
-            "cityKeyword": "",
-            "provPinyinSi": "",
-            "provPinyin": "",
-            "cityPinyinSi": "",
-            "cityPinyin": ""
-        }]
+            cityList: [{
+                "cityCode": undefined,
+                "cityName": "请选择",
+                "provCode": "",
+                "cityAttr": "",
+                "cityKeyword": "",
+                "provPinyinSi": "",
+                "provPinyin": "",
+                "cityPinyinSi": "",
+                "cityPinyin": ""
+            }]
         }
 
     },
@@ -833,9 +832,9 @@ export default {
     },
     watch: {
         province(val) {
-            const _self=this;
-            userService.getCity(val,_self);
-            _self.tradeInfos.bankAddress=undefined;
+            const _self = this;
+            userService.getCity(val, _self);
+            _self.tradeInfos.bankAddress = undefined;
 
         }
     },
@@ -1032,7 +1031,7 @@ export default {
                 orgName: $name.value,
                 telNo: $mobile.value,
                 organAddress: $organAddress.value,
-                shortName:$shortName.value,
+                shortName: $shortName.value,
                 idType: 1,
                 licenceNo: $licenceNo.value,
                 licenceFileUrl: $licenceUrl.dataset.src,
@@ -1067,13 +1066,13 @@ export default {
                 taPowerAttorneyFileUrl: $attorneyUrl.dataset.src
 
             };
-            if($shortName.value.length!=4){
-                if(this.urlType == 1){
+            if ($shortName.value.length != 4) {
+                if (this.urlType == 1) {
                     window.layer.msg('请输入四个汉字的产品简称 ', { time: 1300 })
-                  }else{
-                      window.layer.msg('请输入四个汉字的企业简称 ', { time: 1300 })
-                  } 
-             return false
+                } else {
+                    window.layer.msg('请输入四个汉字的企业简称 ', { time: 1300 })
+                }
+                return false
             }
 
             if (!this.oneCode) {
