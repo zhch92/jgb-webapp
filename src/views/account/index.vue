@@ -412,8 +412,8 @@ export default {
         eventHub.$off('showModal');
     },
     methods: {
-        testLay(account, product, type, number,unit, fn) {
-            layer.confirm('<div style="color:#666666"><p>交易账户：' + account + '</p><p>交易产品：' + product + '</p><p>交易类型：' + type + '</p><p>交易金额：' + number +  unit +'</p></div>',
+        testLay(account, product, type, kind, number, unit, fn) {
+            layer.confirm('<div style="color:#666666"><p>交易账户：' + account + '</p><p>交易产品：' + product + '</p><p>交易类型：' + type + '</p><p>交易' + kind + '：' + number + unit + '</p></div>',
                 {
                     title: '交易提示',
                     time: 0,
@@ -498,9 +498,17 @@ export default {
                 // 临时禁止广发货币快赎
                 window.layer.msg('该产品暂未开放该功能');
             } else {
-                let tradeType=modalType==2?'产品申购':'产品赎回';
-                let unit=modalType==2?' 元':' 份';
-                this.testLay(this.taInfo[0].name, this.product.name, tradeType, money,unit, function() {
+                let tradeType = modalType == 2 ? '产品申购' : '产品赎回';
+                if (modalType == 3 && reserType == 0) {
+                    tradeType = '产品赎回';
+                } else if (modalType == 3 && reserType == 1) {
+                    tradeType = '产品快速赎回';
+                } else {
+                    tradeType = '产品申购';
+                }
+                let unit = modalType == 2 ? ' 元' : ' 份';
+                let kind = modalType == 2 ? '金额' : '份额';
+                this.testLay(this.taInfo[0].name, this.product.name, tradeType, kind, money, unit, function() {
                     money = Number(money.replace(/,/g, ''));
                     (modalType == 0 || modalType == 2) ? money = money : null;
                     (reserType == 0) ? productService.reser(dataObj.id, money, dataObj.issueId, dataObj.txnType, $acctId.val(), modalType, _self) : productService.quickWithdraw(dataObj.id, money, $acctId.val(), _self);

@@ -135,65 +135,65 @@ export const errorHandler = (errCode) => {
         case null: break;
         case '-1004':
             window.layer.msg('会话已过期，请重新登陆', {
-                time: 1300,
+                time: 3000,
                 end: function () {
                     userService.logout()
                 }
             });
             break;
         case 'J0001':
-            window.layer.msg('该企业已注册', { time: 1300 });break;
+            window.layer.msg('该企业已注册', { time: 3000 });break;
         case 'J0002':
-            window.layer.msg('图片验证码不正确', { time: 1300 });break;
+            window.layer.msg('图片验证码不正确', { time: 3000 });break;
         case 'J0003':
-            window.layer.msg('短信验证码不正确', { time: 1300 });break;
+            window.layer.msg('短信验证码不正确', { time: 3000 });break;
         case 'J0004':
-            window.layer.msg('手机号已注册', { time: 1300 });break;
+            window.layer.msg('手机号已注册', { time: 3000 });break;
         case 'J0005':
-            window.layer.msg('短信发送太频繁', { time: 1300 });break;
+            window.layer.msg('短信发送太频繁', { time: 3000 });break;
         case 'J0006':
-            window.layer.msg('短信发送失败', { time: 1300 });break;
+            window.layer.msg('短信发送失败', { time: 3000 });break;
         case 'J0008':
-            window.layer.msg('用户名或密码为空', { time: 1300 });break;
+            window.layer.msg('用户名或密码为空', { time: 3000 });break;
         case 'J0009':
-            window.layer.msg('用户名或密码错误', { time: 1300 });break;
+            window.layer.msg('用户名或密码错误', { time: 3000 });break;
         case 'J0010':
-            window.layer.msg('手机号码不存在', { time: 1300 });break;
+            window.layer.msg('手机号码不存在', { time: 3000 });break;
         case 'J0011':
-            window.layer.msg('该企业已开户', { time: 1300 });break;
+            window.layer.msg('该企业已开户', { time: 3000 });break;
         case 'J0012':
-            window.layer.msg('用户暂未开户', { time: 1300 });break;
+            window.layer.msg('用户暂未开户', { time: 3000 });break;
         case 'J0013':
-            window.layer.msg('交易失败，请重试', { time: 1300 });break;
+            window.layer.msg('交易失败，请重试', { time: 3000 });break;
         case 'J0014':
-            window.layer.msg('开户正在处理中,请稍后', { time: 1300 });break;
+            window.layer.msg('开户正在处理中,请稍后', { time: 3000 });break;
         case 'J0015':
-            window.layer.msg('营业执照信息不能为空', { time: 1300 });break;
+            window.layer.msg('营业执照信息不能为空', { time: 3000 });break;
         case 'J0016':
-            window.layer.msg('企业电话不能为空', { time: 1300});break;
+            window.layer.msg('企业电话不能为空', { time: 3000});break;
         case 'J0017':
-            window.layer.msg('银行信息不能为空', { time: 1300 });break;
+            window.layer.msg('银行信息不能为空', { time: 3000 });break;
         case 'J0018':
-            window.layer.msg('法人信息不能为空', { time: 1300 });break;
+            window.layer.msg('法人信息不能为空', { time: 3000 });break;
         case 'J0019':
-            window.layer.msg('联行号错误', { time: 1300 });break;
+            window.layer.msg('联行号错误', { time: 3000 });break;
         case 'J0020':
-            window.layer.msg('名称不能为空', { time: 1300 });break;
+            window.layer.msg('名称不能为空', { time: 3000 });break;
         case 'J0021':
-            window.layer.msg('中国基金协会备案凭证不能为空', { time: 1300 });break;
+            window.layer.msg('中国基金协会备案凭证不能为空', { time: 3000 });break;
          case 'J0024':
-            window.layer.msg('经办人信息不能为空 ', { time: 1300 });break;
+            window.layer.msg('经办人信息不能为空 ', { time: 3000 });break;
         case 'J0025':
-            window.layer.msg('调用华信查询产品额度失败 ', { time: 1300 });break;
+            window.layer.msg('调用华信查询产品额度失败 ', { time: 3000 });break;
         case 'J0026':
-            window.layer.msg('无效的手机号码 ', { time: 1300 });break;
+            window.layer.msg('无效的手机号码 ', { time: 3000 });break;
         case 'J0027':
-            window.layer.msg('请输入四个汉字的产品简称 ', { time: 1300 });break; 
+            window.layer.msg('请输入四个汉字的产品简称 ', { time: 3000 });break; 
         case 'J0028':
-            window.layer.msg('可申购份额不足 ', { time: 1300 });break;
+            window.layer.msg('可申购份额不足 ', { time: 3000 });break;
         default:
             window.layer.msg('未知错误，返回首页', {
-                time: 1300,
+                time: 3000,
                 end: function () {
                     window.location.href = 'index';
                 }

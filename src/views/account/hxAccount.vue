@@ -133,7 +133,7 @@
                                     <i class="fa fa-check-circle"></i>
                                 </div>
                             </div>
-                             <div class="row">
+                             <div class="row" v-if="urlType==1">
                                 <span class="tips">注：使用产品开户时，需填写产品管理人公司的统一社会信用代码</span>
                             </div>
                             <div class="row">
