@@ -125,8 +125,8 @@
                                                     </p>
                                                 </div>
                                                 <div class="block">
-                                                    <a class="buy btn" @click="openModal($event, 2, 0)" :data-id="product.productId" :data-issue="product.issueId" :data-name="product.prodName" :data-type="product.securityMarketType" :data-code="product.prodCode">申购</a>
-                                                    <a class="sell btn" @click="openModal($event, 3, 1)" :data-id="product.productId" :data-issue="product.issueId" :data-name="product.prodName" :data-asset="product.totalAsset" :data-type="product.securityMarketType" :data-code="product.prodCode">赎回</a>
+                                                    <a class="buy btn" @click="openModal($event, 2, 0)" :data-taaccountid="product.taAccountId" :data-id="product.productId" :data-issue="product.issueId" :data-name="product.prodName" :data-type="product.securityMarketType" :data-code="product.prodCode">申购</a>
+                                                    <a class="sell btn" @click="openModal($event, 3, 1)" :data-taaccountid="product.taAccountId" :data-id="product.productId" :data-issue="product.issueId" :data-name="product.prodName" :data-asset="product.totalAsset" :data-type="product.securityMarketType" :data-code="product.prodCode">赎回</a>
                                                 </div>
                                             </template>
                                             <template v-else-if="product.issueId == 4">
@@ -150,8 +150,8 @@
                                                     </p>
                                                 </div>
                                                 <div class="block">
-                                                    <a class="buy btn" @click="openModal($event,2, 0)" :data-id="product.productId" :data-issue="product.issueId" :data-name="product.prodName" :data-type="product.securityMarketType" :data-code="product.prodCode">申购</a>
-                                                    <a class="sell btn" @click="openModal($event, 3, 1)" :data-id="product.productId" :data-issue="product.issueId" :data-name="product.prodName" :data-asset="product.totalAsset" :data-type="product.securityMarketType" :data-code="product.prodCode">赎回</a>
+                                                    <a class="buy btn" @click="openModal($event,2, 0)" :data-taaccountid="product.taAccountId" :data-id="product.productId" :data-issue="product.issueId" :data-name="product.prodName" :data-type="product.securityMarketType" :data-code="product.prodCode">申购</a>
+                                                    <a class="sell btn" @click="openModal($event, 3, 1)" :data-taaccountid="product.taAccountId" :data-id="product.productId" :data-issue="product.issueId" :data-name="product.prodName" :data-asset="product.totalAsset" :data-type="product.securityMarketType" :data-code="product.prodCode">赎回</a>
                                                 </div>
                                             </template>
                                             <template v-else>
@@ -243,6 +243,7 @@ export default {
             let [$dom, objData] = [$(e.target), {}];
             objData = {
                 product: {
+                    taAccountId: $dom.data('taaccountid'),
                     id: $dom.data('id'),
                     name: $dom.data('name'),
                     prodCode: $dom.data('code'),
@@ -257,6 +258,7 @@ export default {
             if (modalType == 1 || modalType == 3) {
                 objData.getAsset = true;
             }
+            console.log(objData)
             eventHub.$emit('showModal', objData);
         }
     }

@@ -77,7 +77,7 @@
                                 <span>联行号:102584004055</span>
                             </template>
                         </div>
-                        <span>注:1.当日15：00前完成汇款，次日计息；
+                        <span>注:{{product.carryForwardType==1?'1.':''}}当日15：00前完成汇款，次日计息；
                             <em>15：00之后汇款，当日交易失败。</em>
                         </span>
                         <template v-if='product.carryForwardType==1'>
@@ -415,7 +415,7 @@ export default {
         testLay(account, product, type, kind, number, unit, fn) {
             layer.confirm('<div style="color:#666666"><p>交易账户：' + account + '</p><p>交易产品：' + product + '</p><p>交易类型：' + type + '</p><p>交易' + kind + '：' + number + unit + '</p></div>',
                 {
-                    title: '交易提示',
+                    title: '交易确认',
                     time: 0,
                     move: false,
                     area: ['440px', '300px'],
@@ -655,8 +655,9 @@ export default {
                     if (data && data.length > 0) {
                         let selected = data[0].acctId;
                         _self.selected = selected;
+
                         if (objData.getAsset && objData.product.issueId != 1 && objData.product.issueId != 3) {
-                            productService.getRemain(selected, objData.product.id, _self).then((data) => {
+                            productService.getRemain(objData.product.taAccountId?objData.product.taAccountId:selected, objData.product.id, _self).then((data) => {
                                 objData.product.totalAsset = data;
                             })
                         }

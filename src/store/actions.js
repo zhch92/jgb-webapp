@@ -116,17 +116,20 @@ export const fetchIncomeList = ({ commit }, payload) => {
  * @param commit
  */
 export const fetchTradeInfo = ({ commit }) => {
-    let [data, errCode] = ['', ''];
-    Vue.http.get(config.ajax._get.tradeInfo).then((resp) => {
-        data = resp.body;
-        errCode = data.errCode;
-        if (!errCode) {
-            commit('GET_TRADEINFO_SUCCESS', data.data);
-        } else {
-            errorHandler(errCode);
-        }
-    }, (resp) => {
-        logger.error('获取企业信息失败，错误码[' + resp.status + ']');
+    return new Promise((resolve, reject) => {
+
+        let [data, errCode] = ['', ''];
+        Vue.http.get(config.ajax._get.tradeInfo).then((resp) => {
+            data = resp.body;
+            errCode = data.errCode;
+            if (!errCode) {
+                commit('GET_TRADEINFO_SUCCESS', data.data);
+            } else {
+                errorHandler(errCode);
+            }
+        }, (resp) => {
+            logger.error('获取企业信息失败，错误码[' + resp.status + ']');
+        })
     });
 };
 /**
@@ -250,7 +253,7 @@ export const userLogin = ({ commit }, payload) => {
             commit(types.USER_LOGIN_SUCCESS)
         })
     } else {
-            commit(types.USER_LOGIN_SUCCESS)
+        commit(types.USER_LOGIN_SUCCESS)
     }
 };
 
@@ -291,19 +294,3 @@ export const fetchCity = ({ commit }) => {
         })
     })
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
