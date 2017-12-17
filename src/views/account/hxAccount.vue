@@ -133,7 +133,7 @@
                                     <i class="fa fa-check-circle"></i>
                                 </div>
                             </div>
-                             <div class="row" v-if="urlType==1">
+                            <div class="row" v-if="urlType==1">
                                 <span class="tips">注：使用产品开户时，需填写产品管理人公司的统一社会信用代码</span>
                             </div>
                             <div class="row">
@@ -180,7 +180,6 @@
                                 </div>
                             </div>
                         </template>
-
                         <template v-if="urlType == 1">
                             <div class="row">
                                 <div class="left">
@@ -275,7 +274,6 @@
                             <div class="middle">
                                 <input v-if="tradeInfos.corpIdExpireDate!=null && timeFormat(tradeInfos.corpIdExpireDate, 'yyyy-MM-dd').length==10" id="corpid-expiredate" type="text" data-first="true" @mouseenter="addCalender($event)" :value="timeFormat(tradeInfos.corpIdExpireDate, 'yyyy-MM-dd')">
                                 <input v-else id="corpid-expiredate" type="text" data-first="true" @mouseenter="addCalender($event)" v-model="tradeInfos.corpIdExpireDate">
-
                             </div>
                             <div class="right">
                                 <i class="fa fa-calendar"></i>
@@ -406,7 +404,6 @@
                                                     <i class="fa fa-check-circle"></i> -->
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="left">
                                 <span>支行名称:</span>
@@ -464,11 +461,9 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="fourth section">
                     <div class="title"></div>
                     <p class="hint">*根据国家相关法律法规要求，在您提交前，请务必完成风险评估测试（点击”风险评估测试”按钮）</p>
-
                     <div class="content">
                         <div class="row">
                             <div class="left"></div>
@@ -479,7 +474,6 @@
                             <div class="right"></div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -563,175 +557,254 @@
                     <div class="issue">
                         <p class="headline">1.贵单位的性质：</p>
                         <p class="option">
-                            <label><input type="radio" name="issue-1" value='5'>A. 国有企事业单位</label>
-                            <label><input type="radio" name="issue-1" value='2'>B. 非上市民营企业</label>
-                            <label><input type="radio" name="issue-1" value='4'>C. 外资企业</label>
-                            <label><input type="radio" name="issue-1" value='6'>D. 上市公司</label>
+                            <label>
+                                <input type="radio" name="issue-1" value='01_01'>A. 国有企事业单位</label>
+                            <label>
+                                <input type="radio" name="issue-1" value='01_02'>B. 非上市民营企业</label>
+                            <label>
+                                <input type="radio" name="issue-1" value='01_03'>C. 外资企业</label>
+                            <label>
+                                <input type="radio" name="issue-1" value='01_04'>D. 上市公司</label>
                         </p>
                     </div>
                     <div class="issue">
                         <p class="headline">2.贵单位的净资产规模为：</p>
                         <p class="option">
-                            <label><input type="radio" name="issue-2" value='1'>A.500 万元以下</label>
-                            <label><input type="radio" name="issue-2" value='2'>B. 500 万元-2000 万元</label>
-                            <label><input type="radio" name="issue-2" value='3'>C.2000 万元-1 亿元</label>
-                            <label><input type="radio" name="issue-2" value='5'>D. 超过 1 亿元</label>
+                            <label>
+                                <input type="radio" name="issue-2" value='02_01'>A.500 万元以下</label>
+                            <label>
+                                <input type="radio" name="issue-2" value='02_02'>B. 500 万元-2000 万元</label>
+                            <label>
+                                <input type="radio" name="issue-2" value='02_03'>C.2000 万元-1 亿元</label>
+                            <label>
+                                <input type="radio" name="issue-2" value='02_04'>D. 超过 1 亿元</label>
                         </p>
                     </div>
                     <div class="issue">
                         <p class="headline">3.贵单位年营业收入为：</p>
                         <p class="option">
-                            <label><input type="radio" name="issue-3" value='1'>A.500 万元以下</label>
-                            <label><input type="radio" name="issue-3" value='2'>B. 500 万元-3000 万元</label>
-                            <label><input type="radio" name="issue-3" value='3'>C.2000 万元-1 亿元</label>
-                            <label><input type="radio" name="issue-3" value='4'>D. 超过 1 亿元</label>
+                            <label>
+                                <input type="radio" name="issue-3" value='03_01'>A.500 万元以下</label>
+                            <label>
+                                <input type="radio" name="issue-3" value='03_02'>B. 500 万元-3000 万元</label>
+                            <label>
+                                <input type="radio" name="issue-3" value='03_03'>C.2000 万元-1 亿元</label>
+                            <label>
+                                <input type="radio" name="issue-3" value='03_04'>D. 超过 1 亿元</label>
                         </p>
                     </div>
                     <div class="issue">
                         <p class="headline">4.贵单位的性质：</p>
                         <p class="option">
-                            <label><input type="radio" name="issue-4" value='1'>A. 300万以内</label>
-                            <label><input type="radio" name="issue-4" value='2'>B. 300万元～1000万元</label>
-                            <label><input type="radio" name="issue-4" value='3'>C. 1000万元～3000万元</label>
-                            <label><input type="radio" name="issue-4" value='4'>D. 超过3000万元</label>
+                            <label>
+                                <input type="radio" name="issue-4" value='04_01'>A. 300万以内</label>
+                            <label>
+                                <input type="radio" name="issue-4" value='04_02'>B. 300万元～1000万元</label>
+                            <label>
+                                <input type="radio" name="issue-4" value='04_03'>C. 1000万元～3000万元</label>
+                            <label>
+                                <input type="radio" name="issue-4" value='04_04'>D. 超过3000万元</label>
                         </p>
                     </div>
                     <div class="issue">
                         <p class="headline">5.贵单位是否有尚未清偿的数额较大的债务？如有，主要是：</p>
                         <p class="option">
-                            <label><input type="radio" name="issue-5" value='3'>A. 银行贷款</label>
-                            <label><input type="radio" name="issue-5" value='2'>B. 公司债券或企业债券</label>
-                            <label><input type="radio" name="issue-5" value='1'>C. 通过担保公司等中介机构募集的借款</label>
-                            <label><input type="radio" name="issue-5" value='0'>D. 民间借贷</label>
-                            <label><input type="radio" name="issue-5" value='4'>E. 没有数额较大的债务</label>
+                            <label>
+                                <input type="radio" name="issue-5" value='05_01'>A. 银行贷款</label>
+                            <label>
+                                <input type="radio" name="issue-5" value='05_02'>B. 公司债券或企业债券</label>
+                            <label>
+                                <input type="radio" name="issue-5" value='05_03'>C. 通过担保公司等中介机构募集的借款</label>
+                            <label>
+                                <input type="radio" name="issue-5" value='05_04'>D. 民间借贷</label>
+                            <label>
+                                <input type="radio" name="issue-5" value='05_05'>E. 没有数额较大的债务</label>
                         </p>
                     </div>
                     <div class="issue">
                         <p class="headline">6.对于金融产品投资工作，贵单位打算配置怎样的人员力量：</p>
                         <p class="option">
-                            <label><input type="radio" name="issue-6" value='1'>A. 一名兼职人员（包括负责人自行决策）</label>
-                            <label><input type="radio" name="issue-6" value='3'>B. 一名兼职人员</label>
-                            <label><input type="radio" name="issue-6" value='4'>C. 多名兼职或专职人员，相互之间分工不明确</label>
-                            <label><input type="radio" name="issue-6" value='5'>D. 多名兼职或专职人员，相互之间有明确分工</label>
+                            <label>
+                                <input type="radio" name="issue-6" value='06_01'>A. 一名兼职人员（包括负责人自行决策）</label>
+                            <label>
+                                <input type="radio" name="issue-6" value='06_02'>B. 一名兼职人员</label>
+                            <label>
+                                <input type="radio" name="issue-6" value='06_03'>C. 多名兼职或专职人员，相互之间分工不明确</label>
+                            <label>
+                                <input type="radio" name="issue-6" value='06_04'>D. 多名兼职或专职人员，相互之间有明确分工</label>
                         </p>
                     </div>
                     <div class="issue">
                         <p class="headline">7.贵单位所配置的负责金融产品投资工作的人员是否符合以下情况：</p>
                         <p class="option">
-                            <label><input type="radio" name="issue-7" value='6'>A. 现在或此前曾从事金融、经济或财会等与金融产品投资相关的工作超过两年</label>
-                            <label><input type="radio" name="issue-7" value='6'>B. 已取得金融、经济或财会等与金融产品投资相关专业学士以上学位</label>
-                            <label><input type="radio" name="issue-7" value='6'>C. 取得证券从业资格、期货从业资格、注册会计师证书（ CPA）或注册金融分析师证书（ CFA）中的一项及以上</label>
-                            <label><input type="radio" name="issue-7" value='0'>D. 本单位所配置的人员不符合以上任何一项描述</label>
+                            <label>
+                                <input type="radio" name="issue-7" value='07_01'>A. 现在或此前曾从事金融、经济或财会等与金融产品投资相关的工作超过两年</label>
+                            <label>
+                                <input type="radio" name="issue-7" value='07_02'>B. 已取得金融、经济或财会等与金融产品投资相关专业学士以上学位</label>
+                            <label>
+                                <input type="radio" name="issue-7" value='07_03'>C. 取得证券从业资格、期货从业资格、注册会计师证书（ CPA）或注册金融分析师证书（ CFA）中的一项及以上</label>
+                            <label>
+                                <input type="radio" name="issue-7" value='07_04'>D. 本单位所配置的人员不符合以上任何一项描述</label>
                         </p>
                     </div>
                     <div class="issue">
                         <p class="headline">8.贵单位是否建立了金融产品投资相关的管理制度：</p>
                         <p class="option">
-                            <label><input type="radio" name="issue-8" value='1'>A. 没有。因为要保证操作的灵活性</label>
-                            <label><input type="radio" name="issue-8" value='3'>B. 已建立。包括了分工和授权的要求，但未包括投资风险控制的规则</label>
-                            <label><input type="radio" name="issue-8" value='7'>C. 已建立。包括了分工与授权、风险控制等一系列与金融产品投资有关的规则</label>
+                            <label>
+                                <input type="radio" name="issue-8" value='08_01'>A. 没有。因为要保证操作的灵活性</label>
+                            <label>
+                                <input type="radio" name="issue-8" value='08_02'>B. 已建立。包括了分工和授权的要求，但未包括投资风险控制的规则</label>
+                            <label>
+                                <input type="radio" name="issue-8" value='08_03'>C. 已建立。包括了分工与授权、风险控制等一系列与金融产品投资有关的规则</label>
                         </p>
                     </div>
                     <div class="issue">
                         <p class="headline">9.贵单位的投资经验可以被概括为：</p>
                         <p class="option">
-                            <label><input type="radio" name="issue-9" value='1'>A. 有限：除银行活期账户和定期存款外，基本没有其他投资经验</label>
-                            <label><input type="radio" name="issue-9" value='2'>B. 一般：除银行活期账户和定期存款外，购买过基金、保险等理财产品，但还需要进一步的指导</label>
-                            <label><input type="radio" name="issue-9" value='3'>C. 丰富：本单位具有相当投资经验，参与过股票、基金等产品的交易，并倾向于自己做出投资决策</label>
-                            <label><input type="radio" name="issue-9" value='4'>D. 非常丰富：本单位对于投资非常有经验，参与过权证、期货或创业板等高风险产品的交易</label>
+                            <label>
+                                <input type="radio" name="issue-9" value='09_01'>A. 有限：除银行活期账户和定期存款外，基本没有其他投资经验</label>
+                            <label>
+                                <input type="radio" name="issue-9" value='09_02'>B. 一般：除银行活期账户和定期存款外，购买过基金、保险等理财产品，但还需要进一步的指导</label>
+                            <label>
+                                <input type="radio" name="issue-9" value='09_03'>C. 丰富：本单位具有相当投资经验，参与过股票、基金等产品的交易，并倾向于自己做出投资决策</label>
+                            <label>
+                                <input type="radio" name="issue-9" value='09_04'>D. 非常丰富：本单位对于投资非常有经验，参与过权证、期货或创业板等高风险产品的交易</label>
                         </p>
                     </div>
                     <div class="issue">
                         <p class="headline">10. 有一位投资者一个月内做了 15 笔交易（同一品种买卖各一次算一笔），贵单位认为这样的交易频率：</p>
                         <p class="option">
-                            <label><input type="radio" name="issue-10" value='1'>A. 太高了</label>
-                            <label><input type="radio" name="issue-10" value='2'>B. 偏高</label>
-                            <label><input type="radio" name="issue-10" value='3'>C. 正常</label>
-                            <label><input type="radio" name="issue-10" value='4'>D. 偏低</label>
+                            <label>
+                                <input type="radio" name="issue-10" value='10_01'>A. 太高了</label>
+                            <label>
+                                <input type="radio" name="issue-10" value='10_02'>B. 偏高</label>
+                            <label>
+                                <input type="radio" name="issue-10" value='10_03'>C. 正常</label>
+                            <label>
+                                <input type="radio" name="issue-10" value='10_04'>D. 偏低</label>
                         </p>
                     </div>
                     <div class="issue">
                         <p class="headline">11.过去一年时间内，您购买的不同金融产品（含同一类型的不同金融产品）的数量是：</p>
                         <p class="option">
-                            <label><input type="radio" name="issue-11" value='1'>A. 5 个以下</label>
-                            <label><input type="radio" name="issue-11" value='3'>B. 6 至 10 个</label>
-                            <label><input type="radio" name="issue-11" value='4'>C. 11 至 15 个</label>
-                            <label><input type="radio" name="issue-11" value='6'>D. 16 个以上</label>
+                            <label>
+                                <input type="radio" name="issue-11" value='11_01'>A. 5 个以下</label>
+                            <label>
+                                <input type="radio" name="issue-11" value='11_02'>B. 6 至 10 个</label>
+                            <label>
+                                <input type="radio" name="issue-11" value='11_03'>C. 11 至 15 个</label>
+                            <label>
+                                <input type="radio" name="issue-11" value='11_04'>D. 16 个以上</label>
                         </p>
                     </div>
                     <div class="issue">
                         <p class="headline">12.以下金融产品，贵单位投资经验在两年以上的有：（本题可多选）</p>
                         <p class="option">
-                            <label><input type="checkbox" name="issue-12" value='0'>A. 银行存款</label>
-                            <label><input type="checkbox" name="issue-12" value='1'>B.债券、货币市场基金、债券型基金或其它固定收益类产品</label>
-                            <label><input type="checkbox" name="issue-12" value='2'>C.股票、混合型基金、偏股型基金、股票型基金等权益类投资品种</label>
-                            <label><input type="checkbox" name="issue-12" value='4'>D.期货、融资融券</label>
-                            <label><input type="checkbox" name="issue-12" value='6'>E.复杂金融产品或其他产品</label>
+                            <label>
+                                <input type="checkbox" name="issue-12" value='12_01_0'>A. 银行存款</label>
+                            <label>
+                                <input type="checkbox" name="issue-12" value='12_02_1'>B.债券、货币市场基金、债券型基金或其它固定收益类产品</label>
+                            <label>
+                                <input type="checkbox" name="issue-12" value='12_03_2'>C.股票、混合型基金、偏股型基金、股票型基金等权益类投资品种</label>
+                            <label>
+                                <input type="checkbox" name="issue-12" value='12_04_4'>D.期货、融资融券</label>
+                            <label>
+                                <input type="checkbox" name="issue-12" value='12_05_6'>E.复杂金融产品或其他产品</label>
                         </p>
                     </div>
                     <div class="issue">
                         <p class="headline">13.贵单位的性质：</p>
                         <p class="option">
-                            <label><input type="radio" name="issue-13" value='1'>A. 100 万元以内</label>
-                            <label><input type="radio" name="issue-13" value='2'>B. 100 万元-300 万元</label>
-                            <label><input type="radio" name="issue-13" value='3'>C. 300 万元-1000 万元</label>
-                            <label><input type="radio" name="issue-13" value='4'>D. 1000 万元以上</label>
-                            <label><input type="radio" name="issue-13" value='0'>E. 从未投资过金融产品</label>
+                            <label>
+                                <input type="radio" name="issue-13" value='13_01'>A. 100 万元以内</label>
+                            <label>
+                                <input type="radio" name="issue-13" value='13_02'>B. 100 万元-300 万元</label>
+                            <label>
+                                <input type="radio" name="issue-13" value='13_03'>C. 300 万元-1000 万元</label>
+                            <label>
+                                <input type="radio" name="issue-13" value='13_04'>D. 1000 万元以上</label>
+                            <label>
+                                <input type="radio" name="issue-13" value='13_05'>E. 从未投资过金融产品</label>
                         </p>
                     </div>
                     <div class="issue">
                         <p class="headline">14.贵单位用于证券投资的大部分资金不会用作其它用途的时间段为：</p>
                         <p class="option">
-                            <label><input type="radio" name="issue-14" value='1'>A. 短期——0 到 1 年</label>
-                            <label><input type="radio" name="issue-14" value='3'>B. 中期——1 到 5 年</label>
-                            <label><input type="radio" name="issue-14" value='5'>C. 长期——5 年以上</label>
+                            <label>
+                                <input type="radio" name="issue-14" value='14_01'>A. 短期——0 到 1 年</label>
+                            <label>
+                                <input type="radio" name="issue-14" value='14_02'>B. 中期——1 到 5 年</label>
+                            <label>
+                                <input type="radio" name="issue-14" value='14_03'>C. 长期——5 年以上</label>
                         </p>
                     </div>
                     <div class="issue">
                         <p class="headline">15.贵单位进行投资时的首要目标是：</p>
                         <p class="option">
-                            <label><input type="radio" name="issue-15" value='0'>A. 资产保值，我不愿意承担任何投资风险</label>
-                            <label><input type="radio" name="issue-15" value='2'>B. 尽可能保证本金安全，不在乎收益率比较低</label>
-                            <label><input type="radio" name="issue-15" value='4'>C. 产生较多的收益，可以承担一定的投资风险</label>
-                            <label><input type="radio" name="issue-15" value='6'>D. 实现资产大幅增长，愿意承担很大的投资风险</label>
+                            <label>
+                                <input type="radio" name="issue-15" value='15_01'>A. 资产保值，我不愿意承担任何投资风险</label>
+                            <label>
+                                <input type="radio" name="issue-15" value='15_02'>B. 尽可能保证本金安全，不在乎收益率比较低</label>
+                            <label>
+                                <input type="radio" name="issue-15" value='15_03'>C. 产生较多的收益，可以承担一定的投资风险</label>
+                            <label>
+                                <input type="radio" name="issue-15" value='15_04'>D. 实现资产大幅增长，愿意承担很大的投资风险</label>
                         </p>
                     </div>
                     <div class="issue">
                         <p class="headline">16.贵单位打算重点投资于哪些种类的投资品种？（本题可多选）</p>
                         <p class="option">
-                            <label><input type="checkbox" name="issue-16" value='2'>A. 债券、货币市场基金、债券基金等固定收益类投资品种</label>
-                            <label><input type="checkbox" name="issue-16" value='4'>B. 股票、混合型基金、偏股型基金、股票型基金等权益类投资品种</label>
-                            <label><input type="checkbox" name="issue-16" value='5'>C. 期货、融资融券</label>
-                            <label><input type="checkbox" name="issue-16" value='6'>D. 复杂金融产品</label>
-                            <label><input type="checkbox" name="issue-16" value='6'> E. 其他产品</label>
+                            <label>
+                                <input type="checkbox" name="issue-16" value='16_01_2'>A. 债券、货币市场基金、债券基金等固定收益类投资品种</label>
+                            <label>
+                                <input type="checkbox" name="issue-16" value='16_02_4'>B. 股票、混合型基金、偏股型基金、股票型基金等权益类投资品种</label>
+                            <label>
+                                <input type="checkbox" name="issue-16" value='16_03_5'>C. 期货、融资融券</label>
+                            <label>
+                                <input type="checkbox" name="issue-16" value='16_04_6'>D. 复杂金融产品</label>
+                            <label>
+                                <input type="checkbox" name="issue-16" value='16_05_6'> E. 其他产品</label>
                         </p>
                     </div>
                     <div class="issue">
                         <p class="headline">17.贵单位认为自己能承受的最大投资损失是多少？</p>
                         <p class="option">
-                            <label><input type="radio" name="issue-17" value='0'>A. 10%以内</label>
-                            <label><input type="radio" name="issue-17" value='2'>B. 10%-30%</label>
-                            <label><input type="radio" name="issue-17" value='4'>C. 30%-50%</label>
-                            <label><input type="radio" name="issue-17" value='6'>D. 超过 50%</label>
+                            <label>
+                                <input type="radio" name="issue-17" value='17_01'>A. 10%以内</label>
+                            <label>
+                                <input type="radio" name="issue-17" value='17_02'>B. 10%-30%</label>
+                            <label>
+                                <input type="radio" name="issue-17" value='17_03'>C. 30%-50%</label>
+                            <label>
+                                <input type="radio" name="issue-17" value='17_04'>D. 超过 50%</label>
                         </p>
                     </div>
                     <div class="issue">
                         <p class="headline">18. 假设有两种不同的投资：投资 A 预期获得 5%的收益，有可能承担非常小的损失；投资 B 预期获得 20%的收益，但有可能面临25%甚至更高的亏损。您将您的投资资产分配为：</p>
                         <p class="option">
-                            <label><input type="radio" name="issue-18" value='0'>A. 全部投资于 A</label>
-                            <label><input type="radio" name="issue-18" value='1'>B. 大部分投资于 A</label>
-                            <label><input type="radio" name="issue-18" value='3'>C. 两种投资各一半</label>
-                            <label><input type="radio" name="issue-18" value='5'>D. 大部分投资于 B</label>
-                            <label><input type="radio" name="issue-18" value='7'>E. 全部投资于 B</label>
+                            <label>
+                                <input type="radio" name="issue-18" value='18_01'>A. 全部投资于 A</label>
+                            <label>
+                                <input type="radio" name="issue-18" value='18_02'>B. 大部分投资于 A</label>
+                            <label>
+                                <input type="radio" name="issue-18" value='18_03'>C. 两种投资各一半</label>
+                            <label>
+                                <input type="radio" name="issue-18" value='18_04'>D. 大部分投资于 B</label>
+                            <label>
+                                <input type="radio" name="issue-18" value='18_05'>E. 全部投资于 B</label>
                         </p>
                     </div>
                     <div class="issue">
                         <p class="headline">19.贵单位参与金融产品投资的主要目的是什么：</p>
                         <p class="option">
-                            <label><input type="radio" name="issue-19" value='3'>A. 闲置资金保值增值</label>
-                            <label><input type="radio" name="issue-19" value='5'>B. 获取主营业务以外的投资收益</label>
-                            <label><input type="radio" name="issue-19" value='4'>C. 现货套期保值、对冲主营业务风险</label>
-                            <label><input type="radio" name="issue-19" value='1'>D. 减持已持有的股票</label>
+                            <label>
+                                <input type="radio" name="issue-19" value='19_01'>A. 闲置资金保值增值</label>
+                            <label>
+                                <input type="radio" name="issue-19" value='19_02'>B. 获取主营业务以外的投资收益</label>
+                            <label>
+                                <input type="radio" name="issue-19" value='19_03'>C. 现货套期保值、对冲主营业务风险</label>
+                            <label>
+                                <input type="radio" name="issue-19" value='19_04'>D. 减持已持有的股票</label>
                         </p>
                     </div>
                 </div>
@@ -768,6 +841,7 @@ export default {
             serveTel: config.info.serveTel,
             codeDisabled: true,
             riskLevel: '',
+            custanswers: '',
             tradeInfos: {
                 orgNo: '',
                 telNo: '',
@@ -839,8 +913,13 @@ export default {
         }
     },
     activated() {
-        this.$store.dispatch('fetchHxTradeInfo').then((data) => {
-            this.riskLevel = data.data.riskLevel
+        this.$store.dispatch('fetchHxTradeInfo')
+        // .then((data) => {
+        //     this.riskLevel = data.data.riskLevel
+        // });
+        userService.getIsTest({}, this).then((resp) => {
+            // this.riskLevel = false
+            this.riskLevel = resp.data
         });
 
         this.$store.dispatch('fetchCity');
@@ -1062,7 +1141,8 @@ export default {
                 taContactIdNo: $contactNo.value,
                 taContactIdFileUrl: $contactUrl.dataset.src,
                 taContactExpireDate: $contactExpiredate.value,
-                riskLevel: this.riskLevel,
+                // riskLevel: this.riskLevel,
+                custanswers: this.custanswers,
                 taPowerAttorneyFileUrl: $attorneyUrl.dataset.src
 
             };
@@ -1091,7 +1171,7 @@ export default {
             } else {
                 payload.acctType = '0'
             }
-            if (this.riskLevel == '') {
+            if (!this.riskLevel && this.custanswers == '') {
                 window.layer.msg('根据相关法律法规要求，请您先完成风险评估测试，再提交开户申请，谢谢！')
                 return false
             }
@@ -1135,37 +1215,43 @@ export default {
                         const arr = $issue_i;
                         let arrval = []
                         for (let j = 0; j < arr.length; j++) {
-                            arrval.push(arr[j].value)
+                            let val = arr[j].value;
+                            arrval.push(val)
                         }
-                        score[i - 1] = Math.max(...arrval);
+                        let num = arrval.map(item => { return Number(item.substring(6)) });
+                        let max = Math.max(...num);
+                        let index = num.indexOf(max);
+                        score[i - 1] = arrval[index].substring(0, 5);
                     } else {
-                        score[i - 1] = Number($issue_i.val());
+                        score[i - 1] = $issue_i.val();
                     }
                 }
             }
-            const scoreVal = score.reduce(function(pre, next) { return pre + next })
-            if (14 < scoreVal && scoreVal < 27) {
-                layer.msg('您的风险承受能力评估为保守型');
-                _self.riskLevel = 1;
+            this.custanswers = score.join(',')
+            // const scoreVal = score.reduce(function(pre, next) { return pre + next })
+            // if (14 < scoreVal && scoreVal < 27) {
+            //     layer.msg('您的风险承受能力评估为保守型');
+            //     _self.riskLevel = 1;
 
-            } else if (28 < scoreVal && scoreVal < 41) {
-                _self.riskLevel = 2;
-                layer.msg('您的风险承受能力评估为谨慎型')
+            // } else if (28 < scoreVal && scoreVal < 41) {
+            //     _self.riskLevel = 2;
+            //     layer.msg('您的风险承受能力评估为谨慎型')
 
-            } else if (42 < scoreVal && scoreVal < 72) {
-                _self.riskLevel = 3;
-                layer.msg('您的风险承受能力评估为稳健型')
+            // } else if (42 < scoreVal && scoreVal < 72) {
+            //     _self.riskLevel = 3;
+            //     layer.msg('您的风险承受能力评估为稳健型')
 
-            } else if (73 < scoreVal && scoreVal < 86) {
-                _self.riskLevel = 4;
-                layer.msg('您的风险承受能力评估为积极型')
+            // } else if (73 < scoreVal && scoreVal < 86) {
+            //     _self.riskLevel = 4;
+            //     layer.msg('您的风险承受能力评估为积极型')
 
-            } else if (87 < scoreVal && scoreVal < 100) {
-                _self.riskLevel = 5;
-                layer.msg('您的风险承受能力评估为激进型')
+            // } else if (87 < scoreVal && scoreVal < 100) {
+            //     _self.riskLevel = 5;
+            //     layer.msg('您的风险承受能力评估为激进型')
 
-            }
+            // }
             // layer.msg('您的风险承受能力评估为您的风险承受能力评估为保守型');
+            layer.msg('提交成功');
             setTimeout(function() {
                 _self.showKhQuestions = false;
             }, 2500)
@@ -1174,7 +1260,9 @@ export default {
         },
     }
 }
+
 </script>
 <style lang="scss" scoped>
 @import "../../assets/stylesheets/account/updateInfo.scss";
+
 </style>

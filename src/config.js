@@ -38,8 +38,8 @@ const config = {
             taInfo: basePath + 'organ/taInfo',
             allTaAcct: basePath + 'organ/allTaAcct',
             remain:basePath+'products/remain',
-            city:basePath+'city'
-
+            city:basePath+'city',
+            isTest:basePath+'riskTest/isTest'
         },
         _post: {
             uploadImg: basePath + 'file',
