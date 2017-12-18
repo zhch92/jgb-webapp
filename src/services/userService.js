@@ -194,7 +194,6 @@ class UserService {
             _self.$http.get(config.ajax._get.isTest,param).then(resp => {
                         data = resp.body;
                         errCode = data.errCode;
-                        console.log(data)
                         // if (data.data) {
                             resolve(data);
                         // } else {

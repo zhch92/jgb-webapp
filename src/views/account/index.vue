@@ -508,7 +508,7 @@ export default {
                 }
                 let unit = modalType == 2 ? ' 元' : ' 份';
                 let kind = modalType == 2 ? '金额' : '份额';
-                this.testLay(this.taInfo[0].name, this.product.name, tradeType, kind, money, unit, function() {
+                this.testLay($acctId.find("option:selected").text(), this.product.name, tradeType, kind, money, unit, function() {
                     money = Number(money.replace(/,/g, ''));
                     (modalType == 0 || modalType == 2) ? money = money : null;
                     (reserType == 0) ? productService.reser(dataObj.id, money, dataObj.issueId, dataObj.txnType, $acctId.val(), modalType, _self) : productService.quickWithdraw(dataObj.id, money, $acctId.val(), _self);
