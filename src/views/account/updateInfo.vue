@@ -340,12 +340,12 @@
                 </div>
                 <div class="fourth section">
                     <div class="title"></div>
-                    <p class="hint"  v-if="!riskLevelIs">*根据国家相关法律法规要求，在您提交前，请务必完成风险评估测试（点击”风险评估测试”按钮）</p>
+                    <p class="hint"  v-if="!riskLevelIs && !changeBank">*根据国家相关法律法规要求，在您提交前，请务必完成风险评估测试（点击”风险评估测试”按钮）</p>
                     <div class="content">
                         <div class="row">
                             <div class="left"></div>
                             <div class="middle">
-                                <a class="btn question" @click="showKhQuestions=true" v-if="!riskLevelIs">风险评估测试</a>
+                                <a class="btn question" @click="showKhQuestions=true" v-if="!riskLevelIs && !changeBank">风险评估测试</a>
                                 <a class="submit btn" @click="submit" v-if="!changeBank">提交</a>
                                 <a class="submit btn" @click="modifyBankInfo" v-else>提交</a>
                             </div>
@@ -1001,7 +1001,7 @@ export default {
             commonService.submitTradeInfo(this.urlType, payload, this);
         },
         countScore() {
-            let score = [];
+            let scoreArr = [];
             const _self = this;
             for (let i = 1; i < 20; i++) {
                 let $issue_i = $("input[name='issue-" + i + "']:checked");
@@ -1019,17 +1019,18 @@ export default {
                        let num=arrval.map(item=>{return Number(item.substring(6))});
                        let max=Math.max(...num);
                        let index=num.indexOf(max);
-                       score[i - 1] = arrval[index]
+                       scoreArr[i - 1] = arrval[index]
                        // .substring(0,5);
                     } else {
-                        // score[i - 1] = Number($issue_i.val());
-                        score[i - 1] = $issue_i.val();
+                        // scoreArr[i - 1] = Number($issue_i.val());
+                        scoreArr[i - 1] = $issue_i.val();
                     }
                 }
             }
             let scoreNumArr=scoreArr.map(function(item){return Number(item.substring(6))});
             let custanswers=scoreArr.map(function(item){return item.substring(0,5)});
-            this.custanswers = custanswers.join(',')
+            this.custanswers = custanswers.join(',');
+            const scoreVal = scoreNumArr.reduce(function(pre, next) { return pre + next })
             if (14 < scoreVal && scoreVal < 27) {
                 layer.msg('您的风险承受能力评估为保守型');
                 _self.riskLevel = 1;
