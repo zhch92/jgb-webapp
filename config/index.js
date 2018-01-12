@@ -24,8 +24,8 @@ module.exports = {
     proxyTable: {
       // '/jgb-web/v1': 'http://10.10.10.204:9096',
       // '/jgb-web/v1': 'http://10.10.10.19:8080',
-      // '/jgb-web/v1': 'http://www.51jigoubao.com',
-      '/jgb-web/v1': 'http://q1e7793563.iask.in:12414',
+      '/jgb-web/v1': 'http://www.51jigoubao.com',
+      // '/jgb-web/v1': 'http://q1e7793563.iask.in:12414',
 
       '/jgb-download/': 'http://10.10.10.202'
     },

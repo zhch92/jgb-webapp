@@ -618,7 +618,7 @@
                             <label>
                                 <input type="radio" name="issue-5" value='05_04_0'>D. 民间借贷</label>
                             <label>
-                                <input type="radio" name="issue-5" value='05_05)4'>E. 没有数额较大的债务</label>
+                                <input type="radio" name="issue-5" value='05_05_4'>E. 没有数额较大的债务</label>
                         </p>
                     </div>
                     <div class="issue">
@@ -735,7 +735,7 @@
                             <label>
                                 <input type="radio" name="issue-14" value='14_02_3'>B. 中期——1 到 5 年</label>
                             <label>
-                                <input type="radio" name="issue-14" value='14_03_%'>C. 长期——5 年以上</label>
+                                <input type="radio" name="issue-14" value='14_03_5'>C. 长期——5 年以上</label>
                         </p>
                     </div>
                     <div class="issue">
